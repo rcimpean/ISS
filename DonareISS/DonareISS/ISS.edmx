@@ -1,0 +1,1074 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ISSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Boli">
+          <Key>
+            <PropertyRef Name="Id_Boala" />
+          </Key>
+          <Property Name="Id_Boala" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Denumire" Type="varchar" MaxLength="50" />
+          <Property Name="Id_ChestionarDonare" Type="int" />
+        </EntityType>
+        <EntityType Name="Cerere">
+          <Key>
+            <PropertyRef Name="Id_Cerere" />
+          </Key>
+          <Property Name="Id_Cerere" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Celula_Ceruta" Type="varchar" MaxLength="20" />
+          <Property Name="Id_Pacient" Type="int" />
+          <Property Name="Id_Medic" Type="int" />
+          <Property Name="Id_OperatorCentru" Type="int" />
+        </EntityType>
+        <EntityType Name="ChestionarDonare">
+          <Key>
+            <PropertyRef Name="Id_ChestionarDonare" />
+          </Key>
+          <Property Name="Id_ChestionarDonare" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Greutate" Type="int" />
+          <Property Name="InterventiiChirurgicale" Type="varchar" MaxLength="250" />
+          <Property Name="Puls" Type="int" />
+          <Property Name="Tensiune" Type="varchar" MaxLength="15" />
+          <Property Name="Destinatar" Type="varchar" MaxLength="30" />
+          <Property Name="Id_Donator" Type="int" />
+        </EntityType>
+        <EntityType Name="Donator">
+          <Key>
+            <PropertyRef Name="Id_Donator" />
+          </Key>
+          <Property Name="Id_Donator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Utilizator" Type="int" />
+        </EntityType>
+        <EntityType Name="DonatorCentru">
+          <Key>
+            <PropertyRef Name="Id_Donator" />
+            <PropertyRef Name="Id_Operator" />
+          </Key>
+          <Property Name="Id_Donator" Type="int" Nullable="false" />
+          <Property Name="Id_Operator" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GlobuleRosii">
+          <Key>
+            <PropertyRef Name="Id_GlobuleRosii" />
+          </Key>
+          <Property Name="Id_GlobuleRosii" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantitate" Type="int" />
+          <Property Name="DataRecoltarii" Type="date" />
+          <Property Name="DataExpirarii" Type="date" />
+        </EntityType>
+        <EntityType Name="Medic">
+          <Key>
+            <PropertyRef Name="Id_Medic" />
+          </Key>
+          <Property Name="Id_Medic" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Spital" Type="varchar" MaxLength="100" />
+          <Property Name="Id_Utilizator" Type="int" />
+        </EntityType>
+        <EntityType Name="OperatorCentru">
+          <Key>
+            <PropertyRef Name="Id_Operator" />
+          </Key>
+          <Property Name="Id_Operator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adresa" Type="varchar" MaxLength="150" />
+          <Property Name="Id_Utilizator" Type="int" />
+        </EntityType>
+        <EntityType Name="Pacient">
+          <Key>
+            <PropertyRef Name="Id_Pacient" />
+          </Key>
+          <Property Name="Id_Pacient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CantitateCeruta" Type="int" />
+          <Property Name="Id_Utilizator" Type="int" />
+          <Property Name="Id_Medic" Type="int" />
+        </EntityType>
+        <EntityType Name="Plasma">
+          <Key>
+            <PropertyRef Name="Id_Plasma" />
+          </Key>
+          <Property Name="Id_Plasma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantitate" Type="int" />
+          <Property Name="DataRecoltarii" Type="date" />
+          <Property Name="DataExpirarii" Type="date" />
+        </EntityType>
+        <EntityType Name="ProbaDeSange">
+          <Key>
+            <PropertyRef Name="Id_ProbaDeSange" />
+          </Key>
+          <Property Name="Id_ProbaDeSange" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataProba" Type="date" />
+          <Property Name="StatusProba" Type="varchar" MaxLength="10" />
+          <Property Name="Id_Donator" Type="int" />
+          <Property Name="Id_Punga" Type="int" />
+        </EntityType>
+        <EntityType Name="PungaDeSange">
+          <Key>
+            <PropertyRef Name="Id_Punga" />
+          </Key>
+          <Property Name="Id_Punga" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Trombocite" Type="int" />
+          <Property Name="Id_GlobuleRosii" Type="int" />
+          <Property Name="Id_Plasma" Type="int" />
+        </EntityType>
+        <EntityType Name="Stoc">
+          <Key>
+            <PropertyRef Name="Id_Stoc" />
+          </Key>
+          <Property Name="Id_Stoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CantitateTrombocite" Type="int" />
+          <Property Name="CantitateGlobuleRosii" Type="int" />
+          <Property Name="CantitatePlasma" Type="int" />
+          <Property Name="Id_Operator" Type="int" />
+        </EntityType>
+        <EntityType Name="Trombocite">
+          <Key>
+            <PropertyRef Name="Id_Trombocite" />
+          </Key>
+          <Property Name="Id_Trombocite" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantitate" Type="int" />
+          <Property Name="DataRecoltarii" Type="date" />
+          <Property Name="DataExpirarii" Type="date" />
+        </EntityType>
+        <EntityType Name="Utilizator">
+          <Key>
+            <PropertyRef Name="Id_Utilizator" />
+          </Key>
+          <Property Name="Id_Utilizator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="varchar" MaxLength="30" />
+          <Property Name="Prenume" Type="varchar" MaxLength="30" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Varsta" Type="int" />
+          <Property Name="Sex" Type="varchar" MaxLength="1" />
+          <Property Name="CNP" Type="varchar" MaxLength="13" />
+          <Property Name="Parola" Type="varchar" MaxLength="100" />
+          <Property Name="Functie" Type="varchar" MaxLength="15" />
+          <Property Name="Adresa" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__Boli__Id_Chestio__38996AB5">
+          <End Role="ChestionarDonare" Type="Self.ChestionarDonare" Multiplicity="0..1" />
+          <End Role="Boli" Type="Self.Boli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChestionarDonare">
+              <PropertyRef Name="Id_ChestionarDonare" />
+            </Principal>
+            <Dependent Role="Boli">
+              <PropertyRef Name="Id_ChestionarDonare" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cerere__Id_Medic__4E88ABD4">
+          <End Role="Medic" Type="Self.Medic" Multiplicity="0..1" />
+          <End Role="Cerere" Type="Self.Cerere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medic">
+              <PropertyRef Name="Id_Medic" />
+            </Principal>
+            <Dependent Role="Cerere">
+              <PropertyRef Name="Id_Medic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cerere__Id_Opera__4F7CD00D">
+          <End Role="OperatorCentru" Type="Self.OperatorCentru" Multiplicity="0..1" />
+          <End Role="Cerere" Type="Self.Cerere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperatorCentru">
+              <PropertyRef Name="Id_Operator" />
+            </Principal>
+            <Dependent Role="Cerere">
+              <PropertyRef Name="Id_OperatorCentru" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cerere__Id_Pacie__4D94879B">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="Cerere" Type="Self.Cerere" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="Id_Pacient" />
+            </Principal>
+            <Dependent Role="Cerere">
+              <PropertyRef Name="Id_Pacient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chestiona__Id_Do__35BCFE0A">
+          <End Role="Donator" Type="Self.Donator" Multiplicity="0..1" />
+          <End Role="ChestionarDonare" Type="Self.ChestionarDonare" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donator">
+              <PropertyRef Name="Id_Donator" />
+            </Principal>
+            <Dependent Role="ChestionarDonare">
+              <PropertyRef Name="Id_Donator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Donator__Id_Util__267ABA7A">
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+          <End Role="Donator" Type="Self.Donator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizator">
+              <PropertyRef Name="Id_Utilizator" />
+            </Principal>
+            <Dependent Role="Donator">
+              <PropertyRef Name="Id_Utilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonatorCe__Id_Do__5629CD9C">
+          <End Role="Donator" Type="Self.Donator" Multiplicity="1" />
+          <End Role="DonatorCentru" Type="Self.DonatorCentru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donator">
+              <PropertyRef Name="Id_Donator" />
+            </Principal>
+            <Dependent Role="DonatorCentru">
+              <PropertyRef Name="Id_Donator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DonatorCe__Id_Op__571DF1D5">
+          <End Role="OperatorCentru" Type="Self.OperatorCentru" Multiplicity="1" />
+          <End Role="DonatorCentru" Type="Self.DonatorCentru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperatorCentru">
+              <PropertyRef Name="Id_Operator" />
+            </Principal>
+            <Dependent Role="DonatorCentru">
+              <PropertyRef Name="Id_Operator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medic__Id_Utiliz__2E1BDC42">
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+          <End Role="Medic" Type="Self.Medic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizator">
+              <PropertyRef Name="Id_Utilizator" />
+            </Principal>
+            <Dependent Role="Medic">
+              <PropertyRef Name="Id_Utilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OperatorC__Id_Ut__2A4B4B5E">
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+          <End Role="OperatorCentru" Type="Self.OperatorCentru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizator">
+              <PropertyRef Name="Id_Utilizator" />
+            </Principal>
+            <Dependent Role="OperatorCentru">
+              <PropertyRef Name="Id_Utilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pacient__Id_Medi__32E0915F">
+          <End Role="Medic" Type="Self.Medic" Multiplicity="0..1" />
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medic">
+              <PropertyRef Name="Id_Medic" />
+            </Principal>
+            <Dependent Role="Pacient">
+              <PropertyRef Name="Id_Medic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pacient__Id_Util__31EC6D26">
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizator">
+              <PropertyRef Name="Id_Utilizator" />
+            </Principal>
+            <Dependent Role="Pacient">
+              <PropertyRef Name="Id_Utilizator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProbaDeSa__Id_Do__49C3F6B7">
+          <End Role="Donator" Type="Self.Donator" Multiplicity="0..1" />
+          <End Role="ProbaDeSange" Type="Self.ProbaDeSange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donator">
+              <PropertyRef Name="Id_Donator" />
+            </Principal>
+            <Dependent Role="ProbaDeSange">
+              <PropertyRef Name="Id_Donator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProbaDeSa__Id_Pu__4AB81AF0">
+          <End Role="PungaDeSange" Type="Self.PungaDeSange" Multiplicity="0..1" />
+          <End Role="ProbaDeSange" Type="Self.ProbaDeSange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PungaDeSange">
+              <PropertyRef Name="Id_Punga" />
+            </Principal>
+            <Dependent Role="ProbaDeSange">
+              <PropertyRef Name="Id_Punga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PungaDeSa__Id_Gl__44FF419A">
+          <End Role="GlobuleRosii" Type="Self.GlobuleRosii" Multiplicity="0..1" />
+          <End Role="PungaDeSange" Type="Self.PungaDeSange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GlobuleRosii">
+              <PropertyRef Name="Id_GlobuleRosii" />
+            </Principal>
+            <Dependent Role="PungaDeSange">
+              <PropertyRef Name="Id_GlobuleRosii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PungaDeSa__Id_Pl__45F365D3">
+          <End Role="Plasma" Type="Self.Plasma" Multiplicity="0..1" />
+          <End Role="PungaDeSange" Type="Self.PungaDeSange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plasma">
+              <PropertyRef Name="Id_Plasma" />
+            </Principal>
+            <Dependent Role="PungaDeSange">
+              <PropertyRef Name="Id_Plasma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PungaDeSa__Id_Tr__440B1D61">
+          <End Role="Trombocite" Type="Self.Trombocite" Multiplicity="0..1" />
+          <End Role="PungaDeSange" Type="Self.PungaDeSange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trombocite">
+              <PropertyRef Name="Id_Trombocite" />
+            </Principal>
+            <Dependent Role="PungaDeSange">
+              <PropertyRef Name="Id_Trombocite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stoc__Id_Operato__534D60F1">
+          <End Role="OperatorCentru" Type="Self.OperatorCentru" Multiplicity="0..1" />
+          <End Role="Stoc" Type="Self.Stoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperatorCentru">
+              <PropertyRef Name="Id_Operator" />
+            </Principal>
+            <Dependent Role="Stoc">
+              <PropertyRef Name="Id_Operator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ISSModelStoreContainer">
+          <EntitySet Name="Boli" EntityType="Self.Boli" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cerere" EntityType="Self.Cerere" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChestionarDonare" EntityType="Self.ChestionarDonare" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donator" EntityType="Self.Donator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DonatorCentru" EntityType="Self.DonatorCentru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GlobuleRosii" EntityType="Self.GlobuleRosii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medic" EntityType="Self.Medic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperatorCentru" EntityType="Self.OperatorCentru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacient" EntityType="Self.Pacient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plasma" EntityType="Self.Plasma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProbaDeSange" EntityType="Self.ProbaDeSange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PungaDeSange" EntityType="Self.PungaDeSange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stoc" EntityType="Self.Stoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trombocite" EntityType="Self.Trombocite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilizator" EntityType="Self.Utilizator" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Boli__Id_Chestio__38996AB5" Association="Self.FK__Boli__Id_Chestio__38996AB5">
+            <End Role="ChestionarDonare" EntitySet="ChestionarDonare" />
+            <End Role="Boli" EntitySet="Boli" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cerere__Id_Medic__4E88ABD4" Association="Self.FK__Cerere__Id_Medic__4E88ABD4">
+            <End Role="Medic" EntitySet="Medic" />
+            <End Role="Cerere" EntitySet="Cerere" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cerere__Id_Opera__4F7CD00D" Association="Self.FK__Cerere__Id_Opera__4F7CD00D">
+            <End Role="OperatorCentru" EntitySet="OperatorCentru" />
+            <End Role="Cerere" EntitySet="Cerere" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cerere__Id_Pacie__4D94879B" Association="Self.FK__Cerere__Id_Pacie__4D94879B">
+            <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="Cerere" EntitySet="Cerere" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chestiona__Id_Do__35BCFE0A" Association="Self.FK__Chestiona__Id_Do__35BCFE0A">
+            <End Role="Donator" EntitySet="Donator" />
+            <End Role="ChestionarDonare" EntitySet="ChestionarDonare" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donator__Id_Util__267ABA7A" Association="Self.FK__Donator__Id_Util__267ABA7A">
+            <End Role="Utilizator" EntitySet="Utilizator" />
+            <End Role="Donator" EntitySet="Donator" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DonatorCe__Id_Do__5629CD9C" Association="Self.FK__DonatorCe__Id_Do__5629CD9C">
+            <End Role="Donator" EntitySet="Donator" />
+            <End Role="DonatorCentru" EntitySet="DonatorCentru" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DonatorCe__Id_Op__571DF1D5" Association="Self.FK__DonatorCe__Id_Op__571DF1D5">
+            <End Role="OperatorCentru" EntitySet="OperatorCentru" />
+            <End Role="DonatorCentru" EntitySet="DonatorCentru" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medic__Id_Utiliz__2E1BDC42" Association="Self.FK__Medic__Id_Utiliz__2E1BDC42">
+            <End Role="Utilizator" EntitySet="Utilizator" />
+            <End Role="Medic" EntitySet="Medic" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OperatorC__Id_Ut__2A4B4B5E" Association="Self.FK__OperatorC__Id_Ut__2A4B4B5E">
+            <End Role="Utilizator" EntitySet="Utilizator" />
+            <End Role="OperatorCentru" EntitySet="OperatorCentru" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pacient__Id_Medi__32E0915F" Association="Self.FK__Pacient__Id_Medi__32E0915F">
+            <End Role="Medic" EntitySet="Medic" />
+            <End Role="Pacient" EntitySet="Pacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pacient__Id_Util__31EC6D26" Association="Self.FK__Pacient__Id_Util__31EC6D26">
+            <End Role="Utilizator" EntitySet="Utilizator" />
+            <End Role="Pacient" EntitySet="Pacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProbaDeSa__Id_Do__49C3F6B7" Association="Self.FK__ProbaDeSa__Id_Do__49C3F6B7">
+            <End Role="Donator" EntitySet="Donator" />
+            <End Role="ProbaDeSange" EntitySet="ProbaDeSange" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProbaDeSa__Id_Pu__4AB81AF0" Association="Self.FK__ProbaDeSa__Id_Pu__4AB81AF0">
+            <End Role="PungaDeSange" EntitySet="PungaDeSange" />
+            <End Role="ProbaDeSange" EntitySet="ProbaDeSange" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PungaDeSa__Id_Gl__44FF419A" Association="Self.FK__PungaDeSa__Id_Gl__44FF419A">
+            <End Role="GlobuleRosii" EntitySet="GlobuleRosii" />
+            <End Role="PungaDeSange" EntitySet="PungaDeSange" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PungaDeSa__Id_Pl__45F365D3" Association="Self.FK__PungaDeSa__Id_Pl__45F365D3">
+            <End Role="Plasma" EntitySet="Plasma" />
+            <End Role="PungaDeSange" EntitySet="PungaDeSange" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PungaDeSa__Id_Tr__440B1D61" Association="Self.FK__PungaDeSa__Id_Tr__440B1D61">
+            <End Role="Trombocite" EntitySet="Trombocite" />
+            <End Role="PungaDeSange" EntitySet="PungaDeSange" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stoc__Id_Operato__534D60F1" Association="Self.FK__Stoc__Id_Operato__534D60F1">
+            <End Role="OperatorCentru" EntitySet="OperatorCentru" />
+            <End Role="Stoc" EntitySet="Stoc" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ISSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Boli">
+          <Key>
+            <PropertyRef Name="Id_Boala" />
+          </Key>
+          <Property Name="Id_Boala" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Denumire" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ChestionarDonare" Relationship="Self.FK__Boli__Id_Chestio__38996AB5" FromRole="Boli" ToRole="ChestionarDonare" />
+        </EntityType>
+        <EntityType Name="Cerere">
+          <Key>
+            <PropertyRef Name="Id_Cerere" />
+          </Key>
+          <Property Name="Id_Cerere" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Celula_Ceruta" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Medic" Relationship="Self.FK__Cerere__Id_Medic__4E88ABD4" FromRole="Cerere" ToRole="Medic" />
+          <NavigationProperty Name="OperatorCentru" Relationship="Self.FK__Cerere__Id_Opera__4F7CD00D" FromRole="Cerere" ToRole="OperatorCentru" />
+          <NavigationProperty Name="Pacient" Relationship="Self.FK__Cerere__Id_Pacie__4D94879B" FromRole="Cerere" ToRole="Pacient" />
+        </EntityType>
+        <EntityType Name="ChestionarDonare">
+          <Key>
+            <PropertyRef Name="Id_ChestionarDonare" />
+          </Key>
+          <Property Name="Id_ChestionarDonare" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Greutate" Type="Int32" />
+          <Property Name="InterventiiChirurgicale" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Puls" Type="Int32" />
+          <Property Name="Tensiune" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Destinatar" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Boli" Relationship="Self.FK__Boli__Id_Chestio__38996AB5" FromRole="ChestionarDonare" ToRole="Boli" />
+          <NavigationProperty Name="Donator" Relationship="Self.FK__Chestiona__Id_Do__35BCFE0A" FromRole="ChestionarDonare" ToRole="Donator" />
+        </EntityType>
+        <EntityType Name="Donator">
+          <Key>
+            <PropertyRef Name="Id_Donator" />
+          </Key>
+          <Property Name="Id_Donator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ChestionarDonare" Relationship="Self.FK__Chestiona__Id_Do__35BCFE0A" FromRole="Donator" ToRole="ChestionarDonare" />
+          <NavigationProperty Name="Utilizator" Relationship="Self.FK__Donator__Id_Util__267ABA7A" FromRole="Donator" ToRole="Utilizator" />
+          <NavigationProperty Name="ProbaDeSange" Relationship="Self.FK__ProbaDeSa__Id_Do__49C3F6B7" FromRole="Donator" ToRole="ProbaDeSange" />
+          <NavigationProperty Name="OperatorCentru" Relationship="Self.DonatorCentru" FromRole="Donator" ToRole="OperatorCentru" />
+        </EntityType>
+        <EntityType Name="GlobuleRosii">
+          <Key>
+            <PropertyRef Name="Id_GlobuleRosii" />
+          </Key>
+          <Property Name="Id_GlobuleRosii" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantitate" Type="Int32" />
+          <Property Name="DataRecoltarii" Type="DateTime" Precision="0" />
+          <Property Name="DataExpirarii" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="PungaDeSange" Relationship="Self.FK__PungaDeSa__Id_Gl__44FF419A" FromRole="GlobuleRosii" ToRole="PungaDeSange" />
+        </EntityType>
+        <EntityType Name="Medic">
+          <Key>
+            <PropertyRef Name="Id_Medic" />
+          </Key>
+          <Property Name="Id_Medic" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Spital" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cerere" Relationship="Self.FK__Cerere__Id_Medic__4E88ABD4" FromRole="Medic" ToRole="Cerere" />
+          <NavigationProperty Name="Utilizator" Relationship="Self.FK__Medic__Id_Utiliz__2E1BDC42" FromRole="Medic" ToRole="Utilizator" />
+          <NavigationProperty Name="Pacient" Relationship="Self.FK__Pacient__Id_Medi__32E0915F" FromRole="Medic" ToRole="Pacient" />
+        </EntityType>
+        <EntityType Name="OperatorCentru">
+          <Key>
+            <PropertyRef Name="Id_Operator" />
+          </Key>
+          <Property Name="Id_Operator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adresa" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cerere" Relationship="Self.FK__Cerere__Id_Opera__4F7CD00D" FromRole="OperatorCentru" ToRole="Cerere" />
+          <NavigationProperty Name="Utilizator" Relationship="Self.FK__OperatorC__Id_Ut__2A4B4B5E" FromRole="OperatorCentru" ToRole="Utilizator" />
+          <NavigationProperty Name="Stoc" Relationship="Self.FK__Stoc__Id_Operato__534D60F1" FromRole="OperatorCentru" ToRole="Stoc" />
+          <NavigationProperty Name="Donator" Relationship="Self.DonatorCentru" FromRole="OperatorCentru" ToRole="Donator" />
+        </EntityType>
+        <EntityType Name="Pacient">
+          <Key>
+            <PropertyRef Name="Id_Pacient" />
+          </Key>
+          <Property Name="Id_Pacient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CantitateCeruta" Type="Int32" />
+          <NavigationProperty Name="Cerere" Relationship="Self.FK__Cerere__Id_Pacie__4D94879B" FromRole="Pacient" ToRole="Cerere" />
+          <NavigationProperty Name="Medic" Relationship="Self.FK__Pacient__Id_Medi__32E0915F" FromRole="Pacient" ToRole="Medic" />
+          <NavigationProperty Name="Utilizator" Relationship="Self.FK__Pacient__Id_Util__31EC6D26" FromRole="Pacient" ToRole="Utilizator" />
+        </EntityType>
+        <EntityType Name="Plasma">
+          <Key>
+            <PropertyRef Name="Id_Plasma" />
+          </Key>
+          <Property Name="Id_Plasma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantitate" Type="Int32" />
+          <Property Name="DataRecoltarii" Type="DateTime" Precision="0" />
+          <Property Name="DataExpirarii" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="PungaDeSange" Relationship="Self.FK__PungaDeSa__Id_Pl__45F365D3" FromRole="Plasma" ToRole="PungaDeSange" />
+        </EntityType>
+        <EntityType Name="ProbaDeSange">
+          <Key>
+            <PropertyRef Name="Id_ProbaDeSange" />
+          </Key>
+          <Property Name="Id_ProbaDeSange" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataProba" Type="DateTime" Precision="0" />
+          <Property Name="StatusProba" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Donator" Relationship="Self.FK__ProbaDeSa__Id_Do__49C3F6B7" FromRole="ProbaDeSange" ToRole="Donator" />
+          <NavigationProperty Name="PungaDeSange" Relationship="Self.FK__ProbaDeSa__Id_Pu__4AB81AF0" FromRole="ProbaDeSange" ToRole="PungaDeSange" />
+        </EntityType>
+        <EntityType Name="PungaDeSange">
+          <Key>
+            <PropertyRef Name="Id_Punga" />
+          </Key>
+          <Property Name="Id_Punga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="GlobuleRosii" Relationship="Self.FK__PungaDeSa__Id_Gl__44FF419A" FromRole="PungaDeSange" ToRole="GlobuleRosii" />
+          <NavigationProperty Name="Plasma" Relationship="Self.FK__PungaDeSa__Id_Pl__45F365D3" FromRole="PungaDeSange" ToRole="Plasma" />
+          <NavigationProperty Name="ProbaDeSange" Relationship="Self.FK__ProbaDeSa__Id_Pu__4AB81AF0" FromRole="PungaDeSange" ToRole="ProbaDeSange" />
+          <NavigationProperty Name="Trombocite" Relationship="Self.FK__PungaDeSa__Id_Tr__440B1D61" FromRole="PungaDeSange" ToRole="Trombocite" />
+        </EntityType>
+        <EntityType Name="Stoc">
+          <Key>
+            <PropertyRef Name="Id_Stoc" />
+          </Key>
+          <Property Name="Id_Stoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CantitateTrombocite" Type="Int32" />
+          <Property Name="CantitateGlobuleRosii" Type="Int32" />
+          <Property Name="CantitatePlasma" Type="Int32" />
+          <NavigationProperty Name="OperatorCentru" Relationship="Self.FK__Stoc__Id_Operato__534D60F1" FromRole="Stoc" ToRole="OperatorCentru" />
+        </EntityType>
+        <EntityType Name="Trombocite">
+          <Key>
+            <PropertyRef Name="Id_Trombocite" />
+          </Key>
+          <Property Name="Id_Trombocite" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantitate" Type="Int32" />
+          <Property Name="DataRecoltarii" Type="DateTime" Precision="0" />
+          <Property Name="DataExpirarii" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="PungaDeSange" Relationship="Self.FK__PungaDeSa__Id_Tr__440B1D61" FromRole="Trombocite" ToRole="PungaDeSange" />
+        </EntityType>
+        <EntityType Name="Utilizator">
+          <Key>
+            <PropertyRef Name="Id_Utilizator" />
+          </Key>
+          <Property Name="Id_Utilizator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Prenume" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Varsta" Type="Int32" />
+          <Property Name="Sex" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CNP" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Parola" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Functie" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Adresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Donator" Relationship="Self.FK__Donator__Id_Util__267ABA7A" FromRole="Utilizator" ToRole="Donator" />
+          <NavigationProperty Name="Medic" Relationship="Self.FK__Medic__Id_Utiliz__2E1BDC42" FromRole="Utilizator" ToRole="Medic" />
+          <NavigationProperty Name="OperatorCentru" Relationship="Self.FK__OperatorC__Id_Ut__2A4B4B5E" FromRole="Utilizator" ToRole="OperatorCentru" />
+          <NavigationProperty Name="Pacient" Relationship="Self.FK__Pacient__Id_Util__31EC6D26" FromRole="Utilizator" ToRole="Pacient" />
+        </EntityType>
+        <Association Name="FK__Boli__Id_Chestio__38996AB5">
+          <End Role="ChestionarDonare" Type="Self.ChestionarDonare" Multiplicity="0..1" />
+          <End Role="Boli" Type="Self.Boli" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__Cerere__Id_Medic__4E88ABD4">
+          <End Role="Medic" Type="Self.Medic" Multiplicity="0..1" />
+          <End Role="Cerere" Type="Self.Cerere" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__Cerere__Id_Opera__4F7CD00D">
+          <End Role="OperatorCentru" Type="Self.OperatorCentru" Multiplicity="0..1" />
+          <End Role="Cerere" Type="Self.Cerere" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__Cerere__Id_Pacie__4D94879B">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="Cerere" Type="Self.Cerere" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__Chestiona__Id_Do__35BCFE0A">
+          <End Role="Donator" Type="Self.Donator" Multiplicity="0..1" />
+          <End Role="ChestionarDonare" Type="Self.ChestionarDonare" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__Donator__Id_Util__267ABA7A">
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+          <End Role="Donator" Type="Self.Donator" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__ProbaDeSa__Id_Do__49C3F6B7">
+          <End Role="Donator" Type="Self.Donator" Multiplicity="0..1" />
+          <End Role="ProbaDeSange" Type="Self.ProbaDeSange" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__PungaDeSa__Id_Gl__44FF419A">
+          <End Role="GlobuleRosii" Type="Self.GlobuleRosii" Multiplicity="0..1" />
+          <End Role="PungaDeSange" Type="Self.PungaDeSange" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__Medic__Id_Utiliz__2E1BDC42">
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+          <End Role="Medic" Type="Self.Medic" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__Pacient__Id_Medi__32E0915F">
+          <End Role="Medic" Type="Self.Medic" Multiplicity="0..1" />
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__OperatorC__Id_Ut__2A4B4B5E">
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+          <End Role="OperatorCentru" Type="Self.OperatorCentru" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__Stoc__Id_Operato__534D60F1">
+          <End Role="OperatorCentru" Type="Self.OperatorCentru" Multiplicity="0..1" />
+          <End Role="Stoc" Type="Self.Stoc" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__Pacient__Id_Util__31EC6D26">
+          <End Role="Utilizator" Type="Self.Utilizator" Multiplicity="0..1" />
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__PungaDeSa__Id_Pl__45F365D3">
+          <End Role="Plasma" Type="Self.Plasma" Multiplicity="0..1" />
+          <End Role="PungaDeSange" Type="Self.PungaDeSange" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__ProbaDeSa__Id_Pu__4AB81AF0">
+          <End Role="PungaDeSange" Type="Self.PungaDeSange" Multiplicity="0..1" />
+          <End Role="ProbaDeSange" Type="Self.ProbaDeSange" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__PungaDeSa__Id_Tr__440B1D61">
+          <End Role="Trombocite" Type="Self.Trombocite" Multiplicity="0..1" />
+          <End Role="PungaDeSange" Type="Self.PungaDeSange" Multiplicity="*" />
+        </Association>
+        <Association Name="DonatorCentru">
+          <End Role="Donator" Type="Self.Donator" Multiplicity="*" />
+          <End Role="OperatorCentru" Type="Self.OperatorCentru" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ISSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Boli" EntityType="Self.Boli" />
+          <EntitySet Name="Cerere" EntityType="Self.Cerere" />
+          <EntitySet Name="ChestionarDonare" EntityType="Self.ChestionarDonare" />
+          <EntitySet Name="Donator" EntityType="Self.Donator" />
+          <EntitySet Name="GlobuleRosii" EntityType="Self.GlobuleRosii" />
+          <EntitySet Name="Medic" EntityType="Self.Medic" />
+          <EntitySet Name="OperatorCentru" EntityType="Self.OperatorCentru" />
+          <EntitySet Name="Pacient" EntityType="Self.Pacient" />
+          <EntitySet Name="Plasma" EntityType="Self.Plasma" />
+          <EntitySet Name="ProbaDeSange" EntityType="Self.ProbaDeSange" />
+          <EntitySet Name="PungaDeSange" EntityType="Self.PungaDeSange" />
+          <EntitySet Name="Stoc" EntityType="Self.Stoc" />
+          <EntitySet Name="Trombocite" EntityType="Self.Trombocite" />
+          <EntitySet Name="Utilizator" EntityType="Self.Utilizator" />
+          <AssociationSet Name="FK__Boli__Id_Chestio__38996AB5" Association="Self.FK__Boli__Id_Chestio__38996AB5">
+            <End Role="ChestionarDonare" EntitySet="ChestionarDonare" />
+            <End Role="Boli" EntitySet="Boli" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cerere__Id_Medic__4E88ABD4" Association="Self.FK__Cerere__Id_Medic__4E88ABD4">
+            <End Role="Medic" EntitySet="Medic" />
+            <End Role="Cerere" EntitySet="Cerere" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cerere__Id_Opera__4F7CD00D" Association="Self.FK__Cerere__Id_Opera__4F7CD00D">
+            <End Role="OperatorCentru" EntitySet="OperatorCentru" />
+            <End Role="Cerere" EntitySet="Cerere" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cerere__Id_Pacie__4D94879B" Association="Self.FK__Cerere__Id_Pacie__4D94879B">
+            <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="Cerere" EntitySet="Cerere" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chestiona__Id_Do__35BCFE0A" Association="Self.FK__Chestiona__Id_Do__35BCFE0A">
+            <End Role="Donator" EntitySet="Donator" />
+            <End Role="ChestionarDonare" EntitySet="ChestionarDonare" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Donator__Id_Util__267ABA7A" Association="Self.FK__Donator__Id_Util__267ABA7A">
+            <End Role="Utilizator" EntitySet="Utilizator" />
+            <End Role="Donator" EntitySet="Donator" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProbaDeSa__Id_Do__49C3F6B7" Association="Self.FK__ProbaDeSa__Id_Do__49C3F6B7">
+            <End Role="Donator" EntitySet="Donator" />
+            <End Role="ProbaDeSange" EntitySet="ProbaDeSange" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PungaDeSa__Id_Gl__44FF419A" Association="Self.FK__PungaDeSa__Id_Gl__44FF419A">
+            <End Role="GlobuleRosii" EntitySet="GlobuleRosii" />
+            <End Role="PungaDeSange" EntitySet="PungaDeSange" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medic__Id_Utiliz__2E1BDC42" Association="Self.FK__Medic__Id_Utiliz__2E1BDC42">
+            <End Role="Utilizator" EntitySet="Utilizator" />
+            <End Role="Medic" EntitySet="Medic" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pacient__Id_Medi__32E0915F" Association="Self.FK__Pacient__Id_Medi__32E0915F">
+            <End Role="Medic" EntitySet="Medic" />
+            <End Role="Pacient" EntitySet="Pacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OperatorC__Id_Ut__2A4B4B5E" Association="Self.FK__OperatorC__Id_Ut__2A4B4B5E">
+            <End Role="Utilizator" EntitySet="Utilizator" />
+            <End Role="OperatorCentru" EntitySet="OperatorCentru" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stoc__Id_Operato__534D60F1" Association="Self.FK__Stoc__Id_Operato__534D60F1">
+            <End Role="OperatorCentru" EntitySet="OperatorCentru" />
+            <End Role="Stoc" EntitySet="Stoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pacient__Id_Util__31EC6D26" Association="Self.FK__Pacient__Id_Util__31EC6D26">
+            <End Role="Utilizator" EntitySet="Utilizator" />
+            <End Role="Pacient" EntitySet="Pacient" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PungaDeSa__Id_Pl__45F365D3" Association="Self.FK__PungaDeSa__Id_Pl__45F365D3">
+            <End Role="Plasma" EntitySet="Plasma" />
+            <End Role="PungaDeSange" EntitySet="PungaDeSange" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProbaDeSa__Id_Pu__4AB81AF0" Association="Self.FK__ProbaDeSa__Id_Pu__4AB81AF0">
+            <End Role="PungaDeSange" EntitySet="PungaDeSange" />
+            <End Role="ProbaDeSange" EntitySet="ProbaDeSange" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PungaDeSa__Id_Tr__440B1D61" Association="Self.FK__PungaDeSa__Id_Tr__440B1D61">
+            <End Role="Trombocite" EntitySet="Trombocite" />
+            <End Role="PungaDeSange" EntitySet="PungaDeSange" />
+          </AssociationSet>
+          <AssociationSet Name="DonatorCentru" Association="Self.DonatorCentru">
+            <End Role="Donator" EntitySet="Donator" />
+            <End Role="OperatorCentru" EntitySet="OperatorCentru" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ISSModelStoreContainer" CdmEntityContainer="ISSEntities">
+          <EntitySetMapping Name="Boli">
+            <EntityTypeMapping TypeName="ISSModel.Boli">
+              <MappingFragment StoreEntitySet="Boli">
+                <ScalarProperty Name="Id_Boala" ColumnName="Id_Boala" />
+                <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cerere">
+            <EntityTypeMapping TypeName="ISSModel.Cerere">
+              <MappingFragment StoreEntitySet="Cerere">
+                <ScalarProperty Name="Id_Cerere" ColumnName="Id_Cerere" />
+                <ScalarProperty Name="Celula_Ceruta" ColumnName="Celula_Ceruta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChestionarDonare">
+            <EntityTypeMapping TypeName="ISSModel.ChestionarDonare">
+              <MappingFragment StoreEntitySet="ChestionarDonare">
+                <ScalarProperty Name="Id_ChestionarDonare" ColumnName="Id_ChestionarDonare" />
+                <ScalarProperty Name="Greutate" ColumnName="Greutate" />
+                <ScalarProperty Name="InterventiiChirurgicale" ColumnName="InterventiiChirurgicale" />
+                <ScalarProperty Name="Puls" ColumnName="Puls" />
+                <ScalarProperty Name="Tensiune" ColumnName="Tensiune" />
+                <ScalarProperty Name="Destinatar" ColumnName="Destinatar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donator">
+            <EntityTypeMapping TypeName="ISSModel.Donator">
+              <MappingFragment StoreEntitySet="Donator">
+                <ScalarProperty Name="Id_Donator" ColumnName="Id_Donator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GlobuleRosii">
+            <EntityTypeMapping TypeName="ISSModel.GlobuleRosii">
+              <MappingFragment StoreEntitySet="GlobuleRosii">
+                <ScalarProperty Name="Id_GlobuleRosii" ColumnName="Id_GlobuleRosii" />
+                <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+                <ScalarProperty Name="DataRecoltarii" ColumnName="DataRecoltarii" />
+                <ScalarProperty Name="DataExpirarii" ColumnName="DataExpirarii" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medic">
+            <EntityTypeMapping TypeName="ISSModel.Medic">
+              <MappingFragment StoreEntitySet="Medic">
+                <ScalarProperty Name="Id_Medic" ColumnName="Id_Medic" />
+                <ScalarProperty Name="Spital" ColumnName="Spital" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperatorCentru">
+            <EntityTypeMapping TypeName="ISSModel.OperatorCentru">
+              <MappingFragment StoreEntitySet="OperatorCentru">
+                <ScalarProperty Name="Id_Operator" ColumnName="Id_Operator" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacient">
+            <EntityTypeMapping TypeName="ISSModel.Pacient">
+              <MappingFragment StoreEntitySet="Pacient">
+                <ScalarProperty Name="Id_Pacient" ColumnName="Id_Pacient" />
+                <ScalarProperty Name="CantitateCeruta" ColumnName="CantitateCeruta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plasma">
+            <EntityTypeMapping TypeName="ISSModel.Plasma">
+              <MappingFragment StoreEntitySet="Plasma">
+                <ScalarProperty Name="Id_Plasma" ColumnName="Id_Plasma" />
+                <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+                <ScalarProperty Name="DataRecoltarii" ColumnName="DataRecoltarii" />
+                <ScalarProperty Name="DataExpirarii" ColumnName="DataExpirarii" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProbaDeSange">
+            <EntityTypeMapping TypeName="ISSModel.ProbaDeSange">
+              <MappingFragment StoreEntitySet="ProbaDeSange">
+                <ScalarProperty Name="Id_ProbaDeSange" ColumnName="Id_ProbaDeSange" />
+                <ScalarProperty Name="DataProba" ColumnName="DataProba" />
+                <ScalarProperty Name="StatusProba" ColumnName="StatusProba" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PungaDeSange">
+            <EntityTypeMapping TypeName="ISSModel.PungaDeSange">
+              <MappingFragment StoreEntitySet="PungaDeSange">
+                <ScalarProperty Name="Id_Punga" ColumnName="Id_Punga" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stoc">
+            <EntityTypeMapping TypeName="ISSModel.Stoc">
+              <MappingFragment StoreEntitySet="Stoc">
+                <ScalarProperty Name="Id_Stoc" ColumnName="Id_Stoc" />
+                <ScalarProperty Name="CantitateTrombocite" ColumnName="CantitateTrombocite" />
+                <ScalarProperty Name="CantitateGlobuleRosii" ColumnName="CantitateGlobuleRosii" />
+                <ScalarProperty Name="CantitatePlasma" ColumnName="CantitatePlasma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trombocite">
+            <EntityTypeMapping TypeName="ISSModel.Trombocite">
+              <MappingFragment StoreEntitySet="Trombocite">
+                <ScalarProperty Name="Id_Trombocite" ColumnName="Id_Trombocite" />
+                <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+                <ScalarProperty Name="DataRecoltarii" ColumnName="DataRecoltarii" />
+                <ScalarProperty Name="DataExpirarii" ColumnName="DataExpirarii" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilizator">
+            <EntityTypeMapping TypeName="ISSModel.Utilizator">
+              <MappingFragment StoreEntitySet="Utilizator">
+                <ScalarProperty Name="Id_Utilizator" ColumnName="Id_Utilizator" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Varsta" ColumnName="Varsta" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="CNP" ColumnName="CNP" />
+                <ScalarProperty Name="Parola" ColumnName="Parola" />
+                <ScalarProperty Name="Functie" ColumnName="Functie" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK__Boli__Id_Chestio__38996AB5" TypeName="ISSModel.FK__Boli__Id_Chestio__38996AB5" StoreEntitySet="Boli">
+            <EndProperty Name="ChestionarDonare">
+              <ScalarProperty Name="Id_ChestionarDonare" ColumnName="Id_ChestionarDonare" />
+            </EndProperty>
+            <EndProperty Name="Boli">
+              <ScalarProperty Name="Id_Boala" ColumnName="Id_Boala" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_ChestionarDonare" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__Cerere__Id_Medic__4E88ABD4" TypeName="ISSModel.FK__Cerere__Id_Medic__4E88ABD4" StoreEntitySet="Cerere">
+            <EndProperty Name="Medic">
+              <ScalarProperty Name="Id_Medic" ColumnName="Id_Medic" />
+            </EndProperty>
+            <EndProperty Name="Cerere">
+              <ScalarProperty Name="Id_Cerere" ColumnName="Id_Cerere" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_Medic" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__Cerere__Id_Opera__4F7CD00D" TypeName="ISSModel.FK__Cerere__Id_Opera__4F7CD00D" StoreEntitySet="Cerere">
+            <EndProperty Name="OperatorCentru">
+              <ScalarProperty Name="Id_Operator" ColumnName="Id_OperatorCentru" />
+            </EndProperty>
+            <EndProperty Name="Cerere">
+              <ScalarProperty Name="Id_Cerere" ColumnName="Id_Cerere" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_OperatorCentru" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__Cerere__Id_Pacie__4D94879B" TypeName="ISSModel.FK__Cerere__Id_Pacie__4D94879B" StoreEntitySet="Cerere">
+            <EndProperty Name="Pacient">
+              <ScalarProperty Name="Id_Pacient" ColumnName="Id_Pacient" />
+            </EndProperty>
+            <EndProperty Name="Cerere">
+              <ScalarProperty Name="Id_Cerere" ColumnName="Id_Cerere" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_Pacient" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__Chestiona__Id_Do__35BCFE0A" TypeName="ISSModel.FK__Chestiona__Id_Do__35BCFE0A" StoreEntitySet="ChestionarDonare">
+            <EndProperty Name="Donator">
+              <ScalarProperty Name="Id_Donator" ColumnName="Id_Donator" />
+            </EndProperty>
+            <EndProperty Name="ChestionarDonare">
+              <ScalarProperty Name="Id_ChestionarDonare" ColumnName="Id_ChestionarDonare" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_Donator" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__Donator__Id_Util__267ABA7A" TypeName="ISSModel.FK__Donator__Id_Util__267ABA7A" StoreEntitySet="Donator">
+            <EndProperty Name="Utilizator">
+              <ScalarProperty Name="Id_Utilizator" ColumnName="Id_Utilizator" />
+            </EndProperty>
+            <EndProperty Name="Donator">
+              <ScalarProperty Name="Id_Donator" ColumnName="Id_Donator" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_Utilizator" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__ProbaDeSa__Id_Do__49C3F6B7" TypeName="ISSModel.FK__ProbaDeSa__Id_Do__49C3F6B7" StoreEntitySet="ProbaDeSange">
+            <EndProperty Name="Donator">
+              <ScalarProperty Name="Id_Donator" ColumnName="Id_Donator" />
+            </EndProperty>
+            <EndProperty Name="ProbaDeSange">
+              <ScalarProperty Name="Id_ProbaDeSange" ColumnName="Id_ProbaDeSange" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_Donator" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__PungaDeSa__Id_Gl__44FF419A" TypeName="ISSModel.FK__PungaDeSa__Id_Gl__44FF419A" StoreEntitySet="PungaDeSange">
+            <EndProperty Name="GlobuleRosii">
+              <ScalarProperty Name="Id_GlobuleRosii" ColumnName="Id_GlobuleRosii" />
+            </EndProperty>
+            <EndProperty Name="PungaDeSange">
+              <ScalarProperty Name="Id_Punga" ColumnName="Id_Punga" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_GlobuleRosii" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__Medic__Id_Utiliz__2E1BDC42" TypeName="ISSModel.FK__Medic__Id_Utiliz__2E1BDC42" StoreEntitySet="Medic">
+            <EndProperty Name="Utilizator">
+              <ScalarProperty Name="Id_Utilizator" ColumnName="Id_Utilizator" />
+            </EndProperty>
+            <EndProperty Name="Medic">
+              <ScalarProperty Name="Id_Medic" ColumnName="Id_Medic" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_Utilizator" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__Pacient__Id_Medi__32E0915F" TypeName="ISSModel.FK__Pacient__Id_Medi__32E0915F" StoreEntitySet="Pacient">
+            <EndProperty Name="Medic">
+              <ScalarProperty Name="Id_Medic" ColumnName="Id_Medic" />
+            </EndProperty>
+            <EndProperty Name="Pacient">
+              <ScalarProperty Name="Id_Pacient" ColumnName="Id_Pacient" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_Medic" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__OperatorC__Id_Ut__2A4B4B5E" TypeName="ISSModel.FK__OperatorC__Id_Ut__2A4B4B5E" StoreEntitySet="OperatorCentru">
+            <EndProperty Name="Utilizator">
+              <ScalarProperty Name="Id_Utilizator" ColumnName="Id_Utilizator" />
+            </EndProperty>
+            <EndProperty Name="OperatorCentru">
+              <ScalarProperty Name="Id_Operator" ColumnName="Id_Operator" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_Utilizator" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__Stoc__Id_Operato__534D60F1" TypeName="ISSModel.FK__Stoc__Id_Operato__534D60F1" StoreEntitySet="Stoc">
+            <EndProperty Name="OperatorCentru">
+              <ScalarProperty Name="Id_Operator" ColumnName="Id_Operator" />
+            </EndProperty>
+            <EndProperty Name="Stoc">
+              <ScalarProperty Name="Id_Stoc" ColumnName="Id_Stoc" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_Operator" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__Pacient__Id_Util__31EC6D26" TypeName="ISSModel.FK__Pacient__Id_Util__31EC6D26" StoreEntitySet="Pacient">
+            <EndProperty Name="Utilizator">
+              <ScalarProperty Name="Id_Utilizator" ColumnName="Id_Utilizator" />
+            </EndProperty>
+            <EndProperty Name="Pacient">
+              <ScalarProperty Name="Id_Pacient" ColumnName="Id_Pacient" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_Utilizator" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__PungaDeSa__Id_Pl__45F365D3" TypeName="ISSModel.FK__PungaDeSa__Id_Pl__45F365D3" StoreEntitySet="PungaDeSange">
+            <EndProperty Name="Plasma">
+              <ScalarProperty Name="Id_Plasma" ColumnName="Id_Plasma" />
+            </EndProperty>
+            <EndProperty Name="PungaDeSange">
+              <ScalarProperty Name="Id_Punga" ColumnName="Id_Punga" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_Plasma" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__ProbaDeSa__Id_Pu__4AB81AF0" TypeName="ISSModel.FK__ProbaDeSa__Id_Pu__4AB81AF0" StoreEntitySet="ProbaDeSange">
+            <EndProperty Name="PungaDeSange">
+              <ScalarProperty Name="Id_Punga" ColumnName="Id_Punga" />
+            </EndProperty>
+            <EndProperty Name="ProbaDeSange">
+              <ScalarProperty Name="Id_ProbaDeSange" ColumnName="Id_ProbaDeSange" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_Punga" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__PungaDeSa__Id_Tr__440B1D61" TypeName="ISSModel.FK__PungaDeSa__Id_Tr__440B1D61" StoreEntitySet="PungaDeSange">
+            <EndProperty Name="Trombocite">
+              <ScalarProperty Name="Id_Trombocite" ColumnName="Id_Trombocite" />
+            </EndProperty>
+            <EndProperty Name="PungaDeSange">
+              <ScalarProperty Name="Id_Punga" ColumnName="Id_Punga" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="Id_Trombocite" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="DonatorCentru" TypeName="ISSModel.DonatorCentru" StoreEntitySet="DonatorCentru">
+            <EndProperty Name="Donator">
+              <ScalarProperty Name="Id_Donator" ColumnName="Id_Donator" />
+            </EndProperty>
+            <EndProperty Name="OperatorCentru">
+              <ScalarProperty Name="Id_Operator" ColumnName="Id_Operator" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
