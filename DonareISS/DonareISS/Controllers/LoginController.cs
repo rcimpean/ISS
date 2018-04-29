@@ -40,6 +40,11 @@ namespace DonareISS.Controllers
         {
             return View();
         }
+        // GET: Login/Register
+        public ActionResult Register()
+        {
+            return View();
+        }
 
         // POST: Login/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
