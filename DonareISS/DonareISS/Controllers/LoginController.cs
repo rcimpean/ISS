@@ -36,12 +36,7 @@ namespace DonareISS.Controllers
         {
             return View();
         }
-        // GET: Login/Register
-        public ActionResult Register()
-        {
-            return View();
-        }
-
+       
         // GET: Login/Register
         public ActionResult Register()
         {
