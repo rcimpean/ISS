@@ -1,0 +1,44 @@
+﻿@model IEnumerable<DonareISS.Medic>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMedic.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Spital)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pacient)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Spital)
+        </td>
+        <td>
+            @foreach (var it in item.Pacient)
+            {
+                @Html.DisplayFor(modlIt => it.Id_Pacient)
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id_Medic }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id_Medic }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id_Medic }) |
+            @Html.ActionLink("Pacienti", "Pacienti", new { id = item.Id_Medic })
+        </td>
+    </tr>
+}
+
+</table>
