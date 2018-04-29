@@ -160,6 +160,7 @@
       <DependentUpon>ISS.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Donator.cs">
       <DependentUpon>ISS.tt</DependentUpon>
     </Compile>
@@ -267,6 +268,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\Create.cshtml" />
+    <Content Include="Views\Login\Delete.cshtml" />
+    <Content Include="Views\Login\Details.cshtml" />
+    <Content Include="Views\Login\Edit.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
