@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DonareISS.Medic>
+﻿@model  DonareISS.Utilizator
 
 @{
     ViewBag.Title = "Register";
@@ -10,11 +10,11 @@
 <h2 align="center">Register</h2><br />
 <div class="container">
     <div class="col-lg-offset-2 col-sm-offset-2 col-sm-8">
-        <form class="form-horizontal" action="">
+        <form class="form-horizontal" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2 text-left" for="name">Nume:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" placeholder="Introduceti Nume" name="name">
+                    <input type="text" class="form-control" id="name" placeholder="Introduceti Nume" name="Nume">
                 </div>
             </div>
             <div class="form-group">
@@ -34,7 +34,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="pwd">Parola:</label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" id="pwd" placeholder="Parola" name="pwd">
+                    <input type="password" class="form-control" id="pwd" placeholder="Parola" name="parola">
 
                 </div>
             </div>
@@ -56,11 +56,11 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="sex">Sex:</label>
                 <div class="col-sm-5">
-                    <label><input type="radio" class="form-control r" id="sex1" name="gender" value="male">Masculin</label>
+                    <label><input type="radio" class="form-control r" id="sex1" name="Sex" value="M">Masculin</label>
                 </div>
 
                 <div class="col-sm-5">
-                    <label> <input type="radio" class="form-control r" id="sex2" name="gender" value="female">Feminin</label>
+                    <label> <input type="radio" class="form-control r" id="sex2" name="Sex" value="F">Feminin</label>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
                 <label class="control-label col-sm-2" for="quantity">CNP:</label>
                 <div class="col-sm-10">
 
-                    <input type="text" maxlength="13" class="form-control" id="quantity" placeholder="CNP" name="quantity">
+                    <input type="text" maxlength="13" class="form-control" id="quantity" placeholder="CNP" name="CNP">
                 </div>
             </div>
 

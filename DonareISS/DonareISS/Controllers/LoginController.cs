@@ -36,7 +36,7 @@ namespace DonareISS.Controllers
         {
             return View();
         }
-       
+
         // GET: Login/Register
         public ActionResult Register()
         {
@@ -109,17 +109,17 @@ namespace DonareISS.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public ActionResult Register(Utilizator model)
         {
+            var sex = Request.Form["Sex"];
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.Email, model.Parola);
-                    WebSecurity.Login(model.Email, model.Parola);
-                    return RedirectToAction("Index", "Home");
+                    db.Utilizator.Add(model);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
                 catch (MembershipCreateUserException e)
                 {
