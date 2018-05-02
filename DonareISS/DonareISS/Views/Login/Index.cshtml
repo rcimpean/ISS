@@ -11,51 +11,78 @@
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
     <style>
-         #login-div{
-             position:absolute;
-             left:40%;
-             top:40%;
-             border:1px solid #000000;
-             padding: 10px 10px;
-             margin:auto;
-         }
+     button{
+         background-color:#4800ff;
+         color:white;
+         padding:14px 20px;
+         margin:8px 0;
+         border:none;
+         cursor:pointer;
+         width:100%;
+     }
+
+     button:hover{
+         opacity:0.9;
+     }
+     .container{
+         padding: 16px;
+     }
+     input[type=email],input[type=password]
+    {
+         width:100%;
+         padding:12px 20px;
+         margin:auto;
+         display:inline-block;
+         border:1px solid #808080;
+         box-sizing:border-box;
+
+     }
+        .container {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 50%;
+            margin-top: -150px;
+            margin-left: -150px;
+        }
+        .form_login {
+            width: 200px;
+            height: 200px;
+            background: gray;
+            border-radius: 10px;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-size: cover;
+            margin: 0;
+            color: #5e00ff;
+        }
+
+ 
     </style>
 </head>
 <body>
-    <div id="login-div">
-        @using (Html.BeginForm(FormMethod.Post))
-        {
-            <table>
-               <tr>
-                   <td></td>
-               <td style = "text-decoration:underline">Aplication name </td>
-               </tr>
-                
-                <tr>
-               <td>@Html.LabelFor(model => model.Email) </td> 
-               <td>@Html.EditorFor(model =>model.Email)</td>
-                </tr>
-            
-                <tr>
-                <td>@Html.LabelFor(model =>model.Parola)</td>
-                    <td>@Html.EditorFor(model => model.Parola)</td>
+    @using (Html.BeginForm("Index", "Login", FormMethod.Post,  htmlAttributes: new { @id = "form_login"}))
+    {
+        @Html.AntiForgeryToken()
 
-                </tr>
-                
-                <tr>
-                <td></td> 
-                <td>
-                     <input type="submit" name="name" value ="Login"/>
-                     
-                </td>
-                </tr>
+    @*@<form action="~/Controllers/Home" id="form_login" align="center">
+     *@ 
+                <div class="container">
+            <label for="email"><b>Email</b></label>
+            <input type="email" placeholder="Email" name="email" required />
 
-            </table>
+            <label for="Parola"><b>Password</b></label>
+            <input type="password" placeholder="Password" name="Parola" required />
 
-        }
-    </div>
+            <button type="submit"><b>Login</b></button>
+        </div>
 
-    <p>
+    }
+  @*  <p>
         @Html.ActionLink("Create New", "Create")
     </p>
     <table class="table">
@@ -89,7 +116,7 @@
             </th>
             <th></th>
         </tr>
-    
+    *@
  @*   @foreach (var item in Model) {
         <tr>
             <td>
