@@ -6,18 +6,64 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Security.Cryptography;
 using DonareISS;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Text;
 
 namespace DonareISS.Controllers
 {
     public class LoginController : Controller
     {
+
+
         private ISSEntities db = new ISSEntities();
 
-        // GET: Login
         public ActionResult Index()
         {
-            return View(db.Utilizator.Find(1));
+            return View();
+        }
+        // GET: Login
+
+
+        public Utilizator VerificareUtilizator(string parolaCriptata, string email)
+        {
+            var TotiUtilizatorii = db.Utilizator.ToList();
+            foreach (Utilizator ut in TotiUtilizatorii)
+            {
+                if (ut.Parola == parolaCriptata && ut.Email == email)
+                {
+                    return ut;
+                }
+
+
+            }
+            return null;
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult Index([Bind(Include = "Email,Parola")] Utilizator utilizator)
+        {
+
+            var PAROLA = SHA1.Create().ComputeHash(Encoding.UTF8.GetBytes(utilizator.Parola));
+            var ParolaCriptata = BitConverter.ToString(PAROLA).Replace("-", "").ToLower();
+            Utilizator ut = new Utilizator();
+            
+            if ((ut = VerificareUtilizator(ParolaCriptata, utilizator.Email)) == null)
+            {
+                return Content("You have to create an account");
+            }
+            else
+            {
+                //return View("aici");
+                Session["Utilizator"] = ut;
+                return RedirectToAction("Index", ut.Functie);
+               // return RedirectToAction("Index", "Home");
+
+            }
         }
 
         // GET: Login/Details/5
