@@ -1,0 +1,110 @@
+﻿@model IEnumerable<DonareISS.Medic>
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutMedic.cshtml";
+}
+
+
+
+<h2 align="center">Register</h2><br />
+<div class="container">
+    <div class="col-lg-offset-2 col-sm-offset-2 col-sm-8">
+        <form class="form-horizontal" action="">
+            <div class="form-group">
+                <label class="control-label col-sm-2 text-left" for="name">Nume:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" placeholder="Introduceti Nume" name="name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="prenume">Prenume:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="prenume" placeholder="Introduceti prenume" name="prenume">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="email" placeholder="Email " name="email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Parola:</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="pwd" placeholder="Parola" name="pwd">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="confirm_pwd">Confirma Parola:</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="confirm_pwd" placeholder="Confirma parola" name="pwd">
+                    <span id="message"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="varsta">Varsta:</label>
+                <div class="col-sm-10">
+                    <input type="number" min="18" class="form-control" id="varsta" placeholder="" name="varsta">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="sex">Sex:</label>
+                <div class="col-sm-5">
+                    <label><input type="radio" class="form-control r" id="sex1" name="gender" value="male">Masculin</label>
+                </div>
+
+                <div class="col-sm-5">
+                    <label> <input type="radio" class="form-control r" id="sex2" name="gender" value="female">Feminin</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="quantity">CNP:</label>
+                <div class="col-sm-10">
+
+                    <input type="text" maxlength="13" class="form-control" id="quantity" placeholder="CNP" name="quantity">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="functie">Functie:</label>
+                <div class="col-sm-10">
+                    <select name="Functie">
+                        <option value="medic">Medic</option>
+                        <option value="donator">Donator</option>
+                        <option value="operator">Operator centru</option>
+                    </select>
+
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="adresa">Adresa:</label>
+                <div class="col-sm-10">
+                    <textarea type="text" class="form-control" id="adresa" placeholder="Adresa actuala" name="adresa"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Creare cont</button>
+                </div>
+            </div>
+        </form>
+</div>
+    
+    
+</div>
+
+
+
+
+

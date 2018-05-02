@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using System.Security.Cryptography;
 using DonareISS;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Text;
+using System.Web.Security;
+using WebMatrix.WebData;
 
 namespace DonareISS.Controllers
 {
@@ -86,7 +83,12 @@ namespace DonareISS.Controllers
         {
             return View();
         }
-
+       
+        // GET: Login/Register
+        public ActionResult Register()
+        {
+            return View();
+        }
         // POST: Login/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -148,6 +150,32 @@ namespace DonareISS.Controllers
                 return HttpNotFound();
             }
             return View(utilizator);
+        }
+        //
+        // POST: /Account/Register
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(Utilizator model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Attempt to register the user
+                try
+                {
+                    WebSecurity.CreateUserAndAccount(model.Email, model.Parola);
+                    WebSecurity.Login(model.Email, model.Parola);
+                    return RedirectToAction("Index", "Home");
+                }
+                catch (MembershipCreateUserException e)
+                {
+                    ModelState.AddModelError("", e.StatusCode.ToString());
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
         }
 
         // POST: Login/Delete/5

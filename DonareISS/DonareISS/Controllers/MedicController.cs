@@ -17,7 +17,8 @@ namespace DonareISS.Controllers
         // GET: Medic
         public ActionResult Index()
         {
-            return View(db.Medic.ToList());
+            //return View(db.Medic.ToList());
+            return (View());
         }
 
         // GET: Medic/Details/5

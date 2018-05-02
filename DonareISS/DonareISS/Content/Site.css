@@ -35,3 +35,10 @@ body {
     background-color: #222222;
     color: #999999;
 }
+
+.form-horizontal .control-label{
+    text-align:left;
+}
+.form-control.r {
+    height:20px;
+}
