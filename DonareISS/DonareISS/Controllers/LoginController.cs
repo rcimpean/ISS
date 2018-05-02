@@ -8,6 +8,8 @@ using System.Configuration;
 using System.Text;
 using System.Web.Security;
 using WebMatrix.WebData;
+using System;
+using System.Linq;
 
 namespace DonareISS.Controllers
 {
@@ -158,9 +160,10 @@ namespace DonareISS.Controllers
         [AllowAnonymous]
         public ActionResult Register(Utilizator model)
         {
-            var sex = Request.Form["Sex"];
             if (ModelState.IsValid)
             {
+                var PAROLA = SHA1.Create().ComputeHash(Encoding.UTF8.GetBytes(model.Parola));
+                model.Parola = BitConverter.ToString(PAROLA).Replace("-", "").ToLower();
                 // Attempt to register the user
                 try
                 {
