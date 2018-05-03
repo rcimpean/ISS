@@ -14,7 +14,8 @@ namespace DonareISS
     using System.Data.Entity;
     using System;
     using System.Collections.Generic;
-    
+    using DonareISS.Validation;
+
     public partial class Utilizator
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -34,6 +35,7 @@ namespace DonareISS
         [Display(Name = "Prenume")]
         public string Prenume { get; set; }
         [Required]
+        [UniqueEmail]
         [Display(Name = "Email")]
         public string Email { get; set; }
         [Required]
@@ -43,6 +45,7 @@ namespace DonareISS
         [Display(Name = "Sex")]
         public string Sex { get; set; }
         [Required]
+        [UniqueCNP]
         [Display(Name = "CNP")]
         [StringLength(13, ErrorMessage = "CNP gresit", MinimumLength = 13)]
         public string CNP { get; set; }

@@ -160,7 +160,8 @@ namespace DonareISS.Controllers
         [AllowAnonymous]
         public ActionResult Register(Utilizator model)
         {
-            if (ModelState.IsValid)
+            var ConfirmareParola = Request.Form["pwd"];
+            if (ModelState.IsValid && (model.Parola.Equals(ConfirmareParola)))
             {
                 var PAROLA = SHA1.Create().ComputeHash(Encoding.UTF8.GetBytes(model.Parola));
                 model.Parola = BitConverter.ToString(PAROLA).Replace("-", "").ToLower();
@@ -176,6 +177,7 @@ namespace DonareISS.Controllers
                     ModelState.AddModelError("", e.StatusCode.ToString());
                 }
             }
+            
 
             // If we got this far, something failed, redisplay form
             return View(model);

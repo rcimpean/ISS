@@ -217,6 +217,8 @@
     <Compile Include="Utilizator.cs">
       <DependentUpon>ISS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Validation\UniqueCNP.cs" />
+    <Compile Include="Validation\UniqueEmail.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
