@@ -92,3 +92,11 @@ body {
     width: 25%;
     text-align: right;
 }
+}
+
+.form-horizontal .control-label{
+    text-align:left;
+}
+.form-control.r {
+    height:20px;
+}

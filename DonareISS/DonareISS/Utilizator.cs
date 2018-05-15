@@ -9,9 +9,13 @@
 
 namespace DonareISS
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity;
     using System;
     using System.Collections.Generic;
-    
+    using DonareISS.Validation;
+
     public partial class Utilizator
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,14 +28,39 @@ namespace DonareISS
         }
     
         public int Id_Utilizator { get; set; }
+        [Required]
+        [Display (Name = "Nume")]
         public string Nume { get; set; }
+        [Required]
+        [Display(Name = "Prenume")]
         public string Prenume { get; set; }
+        [Required]
+        [UniqueEmail]
+        [Display(Name = "Email")]
         public string Email { get; set; }
+        [Required]
+        [Display(Name = "Varsta")]
         public Nullable<int> Varsta { get; set; }
+        [Required]
+        [Display(Name = "Sex")]
         public string Sex { get; set; }
+        [Required]
+        [UniqueCNP]
+        [Display(Name = "CNP")]
+        [StringLength(13, ErrorMessage = "CNP gresit", MinimumLength = 13)]
         public string CNP { get; set; }
+        [Required]
+        [StringLength(100, ErrorMessage = "Parola Gresita", MinimumLength = 8)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Parola")]
         public string Parola { get; set; }
+        [Required]
+        [Display(Name = "Functie")]
         public string Functie { get; set; }
+        [Required]
+        [StringLength(200, ErrorMessage = "Adresa trebuie sa aiba maxim 200 caractere",MinimumLength = 10)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
         public string Adresa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
