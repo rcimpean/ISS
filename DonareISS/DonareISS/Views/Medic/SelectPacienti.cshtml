@@ -1,0 +1,9 @@
+﻿@model IList<DonareISS.Pacient>
+
+
+<div class="form-group">
+    <label class="control-label col-md-2" for="SelectPacienti">Pacienti</label>
+    <div class="col-md-10">
+        @Html.DropDownList("SelectPacienti", new SelectList((IEnumerable<SelectListItem>)ViewData["Listapacienti"], "Value", "Text"), htmlAttributes: new { @class = "form-control" })
+    </div>
+</div>

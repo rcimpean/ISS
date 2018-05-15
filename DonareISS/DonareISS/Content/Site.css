@@ -16,7 +16,7 @@ body {
 }
 
 /*Container classes*/
-.container.background-white {
+.container.background-white{
     background-color: white;
 }
 
@@ -24,14 +24,71 @@ body {
     background-color: #f5f5f5;
 }
 
+.second-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 /*Card/row classes*/
-.row.card {
-    box-shadow: 0px 0px 5px #888888;
+.row .card, .wrapper-status-bar {
+    box-shadow: 0 0 5px #888888;
     border-radius: 2px;
-    margin: 10px;
+}
+
+.row.margin{
+    margin-right: 0;
+    margin-left: 0;
 }
 
 .footer-wrapper .footer {
     background-color: #222222;
     color: #999999;
+}
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.card.padding {
+    padding: 10px;
+}
+/*general*/
+.form-group:first-child {
+    padding-top: 10px;
+}
+
+.form-group:last-child {
+    padding-bottom: 10px;
+}
+
+/*clase pentru status*/
+
+.status {
+    height: 10px;
+}
+
+.inregistrata, .procesata, .livrata, .finalizata {
+    background-color: green;
+    border-radius: 3px 0 0 3px;
+}
+.status.finalizata {
+    border-radius: 3px
+}
+
+.inregistrata {
+    width: 25%;
+}
+
+.procesata {
+    width: 50%;
+}
+
+.livrata {
+    width: 75%;
+}
+
+.label-status {
+    font-size: 10px;
+    float: left;
+    width: 25%;
+    text-align: right;
 }

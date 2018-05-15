@@ -115,10 +115,63 @@ namespace DonareISS.Controllers
             return RedirectToAction("Index");
         }
 
+        // Get: Medic/Pacienti/1
         public ActionResult Pacienti(int? id)
         {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Nu sa primit Medicul!!!");
+
             Medic medic = db.Medic.Find(id);
+
+            if (medic == null)
+                return HttpNotFound("Nu exista acest medic");
+
             return View(medic.Pacient);
+        }
+
+        public ActionResult CerereSange()
+        {
+            return View();
+        }
+
+        [ChildActionOnly]
+        public ActionResult SelectPacienti()
+        {
+            var list = db.Pacient.ToList();
+            List<SelectListItem> selectlist = new List<SelectListItem>();
+            foreach (var item in list)
+            {
+                selectlist.Add(new SelectListItem { Text = item.Utilizator.Nume + ' ' + item.Utilizator.Prenume , Value = item.Id_Pacient.ToString()});
+            }
+
+            ViewData["ListaPacienti"] = selectlist;
+
+            return PartialView();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CerereSange([Bind(Include = "Celula_Ceruta,Cantitate_Ceruta,SelectPacienti")] Cerere cerere)
+        {
+            string selectedPacientId = Request.Form["SelectPacienti"];
+            
+            if (ModelState.IsValid && cerere.Celula_Ceruta != null && cerere.Cantitate_Ceruta != null)
+            {
+                cerere.Status = "Inregistrata";
+                cerere.Pacient = db.Pacient.Find(Convert.ToInt32(selectedPacientId));
+                // mai trebuie sa adaugi medicul la care apartine
+                db.Cerere.Add(cerere);
+                db.SaveChanges();
+                
+                ViewBag.Msg = "Cererea a fost inregistrata cu succes!";
+                return View("Success");
+            }
+            return View(cerere);
+        }
+
+        public ActionResult Success()
+        {
+            return View();
         }
 
         protected override void Dispose(bool disposing)

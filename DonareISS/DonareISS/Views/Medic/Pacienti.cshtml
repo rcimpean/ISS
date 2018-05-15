@@ -7,14 +7,37 @@
 
 <h2>Pacienti</h2>
 
-@foreach (var item in Model)
-{
-    <div class="row card">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <p>
-                @Html.DisplayNameFor(model => model.CantitateCeruta)
-                @Html.DisplayFor(modelItem => item.CantitateCeruta)
-            </p>
+<div class="row margin">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="card padding margin-bottom-10">
+                <div class="name">
+                    <p>@Html.DisplayFor(m => item.Utilizator.Nume) @Html.DisplayFor(m => item.Utilizator.Nume) </p>
+                </div>
+
+                @foreach (var x in item.Cerere)
+                {
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="card padding margin-bottom-10">
+                                <div class="wrapper-status">
+                                    <div class="label-status">Inregistrata</div>
+                                    <div class="label-status">Procesata</div>
+                                    <div class="label-status">Livrata</div>
+                                    <div class="label-status">Finalizata</div>
+                                    <div class="clearfix"></div>
+                                    <div class="wrapper-status-bar">
+                                        <div class="status @x.Status"></div>
+                                    </div>
+                                </div>
+                                @Html.DisplayFor(modelItemx => x.Celula_Ceruta) @Html.DisplayFor(modelItemx => x.Cantitate_Ceruta) <br />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
-    </div>
-}
+    }
+</div>

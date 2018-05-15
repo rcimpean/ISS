@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ISSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ISSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Boli">
           <Key>
             <PropertyRef Name="Id_Boala" />
@@ -22,6 +22,8 @@
           <Property Name="Id_Pacient" Type="int" />
           <Property Name="Id_Medic" Type="int" />
           <Property Name="Id_OperatorCentru" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="20" />
+          <Property Name="Cantitate_Ceruta" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="ChestionarDonare">
           <Key>
@@ -451,8 +453,7 @@
             <End Role="Stoc" EntitySet="Stoc" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ISSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -473,6 +474,8 @@
           <NavigationProperty Name="Medic" Relationship="Self.FK__Cerere__Id_Medic__4E88ABD4" FromRole="Cerere" ToRole="Medic" />
           <NavigationProperty Name="OperatorCentru" Relationship="Self.FK__Cerere__Id_Opera__4F7CD00D" FromRole="Cerere" ToRole="OperatorCentru" />
           <NavigationProperty Name="Pacient" Relationship="Self.FK__Cerere__Id_Pacie__4D94879B" FromRole="Cerere" ToRole="Pacient" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Cantitate_Ceruta" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="ChestionarDonare">
           <Key>
@@ -776,6 +779,8 @@
           <EntitySetMapping Name="Cerere">
             <EntityTypeMapping TypeName="ISSModel.Cerere">
               <MappingFragment StoreEntitySet="Cerere">
+                <ScalarProperty Name="Cantitate_Ceruta" ColumnName="Cantitate_Ceruta" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Id_Cerere" ColumnName="Id_Cerere" />
                 <ScalarProperty Name="Celula_Ceruta" ColumnName="Celula_Ceruta" />
               </MappingFragment>

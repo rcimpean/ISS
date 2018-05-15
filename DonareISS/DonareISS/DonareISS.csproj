@@ -275,6 +275,9 @@
     <Content Include="Views\Medic\Edit.cshtml" />
     <Content Include="Views\Medic\Index.cshtml" />
     <Content Include="Views\Medic\Pacienti.cshtml" />
+    <Content Include="Views\Medic\CerereSange.cshtml" />
+    <Content Include="Views\Medic\SelectPacienti.cshtml" />
+    <Content Include="Views\Medic\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

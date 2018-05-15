@@ -16,6 +16,8 @@ namespace DonareISS
     {
         public int Id_Cerere { get; set; }
         public string Celula_Ceruta { get; set; }
+        public string Status { get; set; }
+        public string Cantitate_Ceruta { get; set; }
     
         public virtual Medic Medic { get; set; }
         public virtual OperatorCentru OperatorCentru { get; set; }
