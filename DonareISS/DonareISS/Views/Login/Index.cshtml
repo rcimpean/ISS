@@ -1,159 +1,54 @@
-﻿@model DonareISS.Utilizator
-
+﻿
 @{
-    Layout = null;
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutLoginV1.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-    <style>
-     button{
-         background-color:#4800ff;
-         color:white;
-         padding:14px 20px;
-         margin:8px 0;
-         border:none;
-         cursor:pointer;
-         width:100%;
-     }
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+                <img src="~/Content/LoginV1Content/img-02.png" />
+            </div>
+            @using (Html.BeginForm("Index", "Login", FormMethod.Post, htmlAttributes: new { @id = "form_login" }))
+            {
+                @Html.AntiForgeryToken()
+                <form class="login100-form validate-form" method="post">
+                    <span class="login100-form-title">
+                        Login
+                    </span>
 
-     button:hover{
-         opacity:0.9;
-     }
-     .container{
-         padding: 16px;
-     }
-     input[type=email],input[type=password]
-    {
-         width:100%;
-         padding:12px 20px;
-         margin:auto;
-         display:inline-block;
-         border:1px solid #808080;
-         box-sizing:border-box;
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="email" placeholder="Email">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
 
-     }
-        .container {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            top: 50%;
-            left: 50%;
-            margin-top: -150px;
-            margin-left: -150px;
-        }
-        .form_login {
-            width: 200px;
-            height: 200px;
-            background: gray;
-            border-radius: 10px;
-            margin: 0;
-            padding: 0;
-        }
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="parola" placeholder="Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
 
-        body {
-            background-size: cover;
-            margin: 0;
-            color: #5e00ff;
-        }
-
- 
-    </style>
-</head>
-<body>
-    @using (Html.BeginForm("Index", "Login", FormMethod.Post,  htmlAttributes: new { @id = "form_login"}))
-    {
-        @Html.AntiForgeryToken()
-
-    @*@<form action="~/Controllers/Home" id="form_login" align="center">
-     *@ 
-                <div class="container">
-            <label for="email"><b>Email</b></label>
-            <input type="email" placeholder="Email" name="email" required />
-
-            <label for="Parola"><b>Password</b></label>
-            <input type="password" placeholder="Password" name="Parola" required />
-
-            <button type="submit"><b>Login</b></button>
+                    <div class="text-center p-t-136">
+                        <a class="txt2" href="~/Login/Register">
+                            Create your Account
+                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </form>
+            }
         </div>
 
-    }
-  @*  <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nume)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Prenume)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Varsta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sex)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CNP)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Parola)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Functie)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Adresa)
-            </th>
-            <th></th>
-        </tr>
-    *@
- @*   @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nume)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prenume)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Varsta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sex)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CNP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Parola)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Functie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adresa)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id_Utilizator }) |
-                @Html.ActionLink("Details", "Details", new { id=item.Id_Utilizator }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id_Utilizator })
-            </td>
-        </tr>
-    }
-    *@
-    </table>
-</body>
-</html>
+    </div>
+</div>

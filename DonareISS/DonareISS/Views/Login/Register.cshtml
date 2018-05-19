@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_LayoutMedic.cshtml";
+    Layout = "~/Views/Shared/_LayoutRegister.cshtml";
 }
 
 
@@ -75,13 +75,28 @@
 
             <div class="form-group">
                 <label class="control-label col-sm-2" for="functie">Functie:</label>
-                <div class="col-sm-10">
-                    <select name="Functie">
-                        <option value="medic">Medic</option>
-                        <option value="donator">Donator</option>
-                        <option value="operator">Operator centru</option>
-                    </select>
+                <div class="col-sm-10" ng-app="AppFunctie" ng-controller="Functie">
+                    <select name="Functie" ng-model="AlegeFunctie">
+                        <option value="Medic">Medic</option>
+                        <option value="Donator">Donator</option>
+                        <option value="Operator">Operator centru</option>
 
+                    </select>
+                    <div class="form-group" ng-show="AlegeFunctie == 'Medic'">
+                        <label class="control-label col-sm-2" ng-show="AlegeFunctie == 'Medic'" for=" Spital">Spital:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" ng-show="AlegeFunctie == 'Medic'" name="Spital" placeholder="Spital">
+
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="AlegeFunctie == 'Operator'">
+                        <label class="control-label col-sm-2" ng-show="AlegeFunctie == 'Operator'" for=" AdresaCentru">Adresa centru:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" ng-show="AlegeFunctie == 'Operator'" name="AdresaCentru" placeholder="Adresa Centru">
+
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
 
@@ -99,9 +114,9 @@
                 </div>
             </div>
         </form>
-</div>
-    
-    
+    </div>
+
+
 </div>
 
 

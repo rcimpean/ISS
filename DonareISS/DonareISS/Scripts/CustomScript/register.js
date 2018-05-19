@@ -14,5 +14,8 @@
         } else
             $('#message').html('Parola gresita!').css('color', 'red');
     });
+
 });
+
+
 
