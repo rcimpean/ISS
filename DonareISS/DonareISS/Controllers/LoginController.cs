@@ -170,6 +170,24 @@ namespace DonareISS.Controllers
                 {
                     db.Utilizator.Add(model);
                     db.SaveChanges();
+                    if (model.Functie == "Medic")
+                    {
+                        var Spital = Request.Form["Spital"];
+                        var medic = new Medic();
+                        medic.Spital = Spital;
+                        medic.Utilizator = model;
+                        db.Medic.Add(medic);
+                        db.SaveChanges();
+                    }
+                    else if (model.Functie == "Operator")
+                    {
+                        var AdresaCentru = Request.Form["AdresaCentru"];
+                        var operatorCentru = new OperatorCentru();
+                        operatorCentru.Adresa = AdresaCentru;
+                        operatorCentru.Utilizator = model;
+                        db.OperatorCentru.Add(operatorCentru);
+                        db.SaveChanges();
+                    }
                     return RedirectToAction("Index");
                 }
                 catch (MembershipCreateUserException e)
