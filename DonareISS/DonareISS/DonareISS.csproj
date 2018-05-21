@@ -219,6 +219,7 @@
     </Compile>
     <Compile Include="Validation\UniqueCNP.cs" />
     <Compile Include="Validation\UniqueEmail.cs" />
+    <Compile Include="Validation\ValidationSession.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

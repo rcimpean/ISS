@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DonareISS.Validation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace DonareISS.Controllers
 {
     public class HomeController : Controller
     {
+        [ValidationSession("Home")]
         public ActionResult Index()
         {
             return View();

@@ -1,11 +1,11 @@
 ﻿@model DonareISS.Cerere
 
 @{
-    ViewBag.Title = "CerereSange";
+    ViewBag.Title = "Cerere Sange";
     Layout = "~/Views/Shared/_LayoutMedic.cshtml";
 }
 
-<h2>CerereSange</h2>
+<h2>Cerere Sange</h2>
 
 <div class="second-container">
     <div class="row margin">
@@ -18,15 +18,15 @@
                 <div class="form-horizontal">
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Celula_Ceruta, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
+                        @Html.LabelFor(model => model.Celula_Ceruta, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
                             @Html.EditorFor(model => model.Celula_Ceruta, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Celula_Ceruta, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Cantitate_Ceruta, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
+                        @Html.LabelFor(model => model.Cantitate_Ceruta, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
                             @Html.EditorFor(model => model.Cantitate_Ceruta, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.Cantitate_Ceruta, "", new { @class = "text-danger" })
                         </div>
@@ -34,7 +34,7 @@
                     @Html.Action("SelectPacienti")
 
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
+                        <div class="col-md-offset-3 col-md-9">
                             <input type="submit" value="Trimite" class="btn btn-default" />
                         </div>
                     </div>

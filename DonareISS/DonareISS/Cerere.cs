@@ -11,12 +11,17 @@ namespace DonareISS
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Cerere
     {
         public int Id_Cerere { get; set; }
+
+        [Display(Name = "Element figurat")]
         public string Celula_Ceruta { get; set; }
         public string Status { get; set; }
+
+        [Display(Name = "Cantitatea ceruta")]
         public string Cantitate_Ceruta { get; set; }
     
         public virtual Medic Medic { get; set; }
