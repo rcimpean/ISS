@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DonareISS;
+using DonareISS.Validation;
 
 namespace DonareISS.Controllers
 {
@@ -15,13 +16,17 @@ namespace DonareISS.Controllers
         private ISSEntities db = new ISSEntities();
 
         // GET: Medic
+        [ValidationSession("Medic")]
         public ActionResult Index()
         {
-            //return View(db.Medic.ToList());
-            return (View());
+            Utilizator ut = (Utilizator)Session["Utilizator"];
+            Medic m = db.Medic.Where(x => x.Utilizator.Id_Utilizator == ut.Id_Utilizator).First();
+            /*Gandeste o descriere pentru Medic/Index (informatii de baza + linkuri)*/
+            return View(m);
         }
 
         // GET: Medic/Details/5
+        [ValidationSession("Medic")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +42,7 @@ namespace DonareISS.Controllers
         }
 
         // GET: Medic/Create
+        [ValidationSession("Medic")]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +53,7 @@ namespace DonareISS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidationSession("Medic")]
         public ActionResult Create([Bind(Include = "Id_Medic,Spital")] Medic medic)
         {
             if (ModelState.IsValid)
@@ -60,6 +67,7 @@ namespace DonareISS.Controllers
         }
 
         // GET: Medic/Edit/5
+        [ValidationSession("Medic")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,6 +87,7 @@ namespace DonareISS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidationSession("Medic")]
         public ActionResult Edit([Bind(Include = "Id_Medic,Spital")] Medic medic)
         {
             if (ModelState.IsValid)
@@ -91,6 +100,7 @@ namespace DonareISS.Controllers
         }
 
         // GET: Medic/Delete/5
+        [ValidationSession("Medic")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,6 +118,7 @@ namespace DonareISS.Controllers
         // POST: Medic/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [ValidationSession("Medic")]
         public ActionResult DeleteConfirmed(int id)
         {
             Medic medic = db.Medic.Find(id);
@@ -117,6 +128,7 @@ namespace DonareISS.Controllers
         }
 
         // Get: Medic/Pacienti/1
+        [ValidationSession("Medic")]
         public ActionResult Pacienti(int? id)
         {
             if (id == null)
@@ -130,12 +142,14 @@ namespace DonareISS.Controllers
             return View(medic.Pacient);
         }
 
+        [ValidationSession("Medic")]
         public ActionResult CerereSange()
         {
             return View();
         }
 
         [ChildActionOnly]
+        [ValidationSession("Medic")]
         public ActionResult SelectPacienti()
         {
             var list = db.Pacient.ToList();
@@ -152,6 +166,7 @@ namespace DonareISS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidationSession("Medic")]
         public ActionResult CerereSange([Bind(Include = "Celula_Ceruta,Cantitate_Ceruta,SelectPacienti")] Cerere cerere)
         {
             string selectedPacientId = Request.Form["SelectPacienti"];
@@ -170,6 +185,7 @@ namespace DonareISS.Controllers
             return View(cerere);
         }
 
+        [ValidationSession("Medic")]
         public ActionResult Success()
         {
             return View();
