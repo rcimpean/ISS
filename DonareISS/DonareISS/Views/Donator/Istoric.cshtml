@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DonareISS.ProbaDeSange>
+
+@{
+    ViewBag.Title = "Istoric";
+    Layout = "~/Views/Shared/_LayoutDonator.cshtml";
+}
+
+<h2>Istoric</h2>
+
+<div class="row margin">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="card padding margin-bottom-10">
+                <div class="date">
+                    <p>@item.DataProba.Value.ToShortDateString()</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="card padding margin-bottom-10">
+                            <div class="wrapper-status">
+                                @if (@item.StatusProba == "Neacceptat")
+                                {
+                                    <div class="label-status-proba respins">Neacceptat</div>
+                                }
+                                else
+                                {
+                                    <div class="label-status-proba">Recoltat</div>
+                                    <div class="label-status-proba">Testare</div>
+                                    <div class="label-status-proba">Depozitat</div>
+                                }
+                                <div class="clearfix"></div>
+                                <div class="wrapper-status-bar">
+                                    <div class="status-proba @item.StatusProba"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if (@item.StatusProba == "Depozitat")
+                {
+                    <div class="summary">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="card padding-entitate margin-bottom-10">
+                                    <div class="entitati">Trombocite : @item.PungaDeSange.Trombocite.Cantitate</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="card padding-entitate margin-bottom-10">
+                                    <div class="entitati">Globule: @item.PungaDeSange.GlobuleRosii.Cantitate</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="card padding-entitate margin-bottom-10">
+                                    <div class="entitati">Plasma: @item.PungaDeSange.Plasma.Cantitate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>

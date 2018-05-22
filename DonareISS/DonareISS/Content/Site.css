@@ -77,16 +77,16 @@ body {
 }
 /*clase pentru status*/
 
-.status {
+.status, .status-proba {
     height: 10px;
 }
 
-.inregistrata, .procesata, .livrata, .finalizata {
+.inregistrata, .procesata, .livrata, .finalizata, .Recoltat, .Testare, .Depozitat {
     background-color: green;
     border-radius: 3px 0 0 3px;
 }
 .status.finalizata {
-    border-radius: 3px
+    border-radius: 3px;
 }
 
 .inregistrata {
@@ -101,11 +101,36 @@ body {
     width: 75%;
 }
 
-.label-status {
+/*Clase pentru statusul probei de sange*/
+.status-proba.Depozitat {
+    border-radius: 3px;
+}
+
+.Recoltat {
+    width: 33.33%;
+}
+
+.Testare {
+    width: 66.66%;
+}
+
+.Neacceptat {
+    background-color: darkred;
+    border-radius: 3px;
+}
+
+.label-status, .label-status-proba {
     font-size: 10px;
     float: left;
     width: 25%;
     text-align: right;
+}
+.label-status-proba {
+    width: 33.33%;
+}
+
+.label-status-proba.respins {
+    width: 100%;
 }
 
 .form-horizontal .control-label{
@@ -113,4 +138,12 @@ body {
 }
 .form-control.r {
     height:20px;
+}
+
+.date {
+    font-weight: bold;
+}
+
+.padding-entitate {
+    padding: 5px 10px;
 }

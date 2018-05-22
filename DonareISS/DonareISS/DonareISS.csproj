@@ -1113,6 +1113,7 @@
     <Content Include="Views\OperatorCentru\Index.cshtml" />
     <Content Include="Views\Login\LoginV2.cshtml" />
     <Content Include="Views\Shared\_LayoutLoginV1.cshtml" />
+    <Content Include="Views\Donator\Istoric.cshtml" />
     <None Include="Views\Shared\_LayoutDonator.cshtml" />
     <Content Include="Views\Donator\Create.cshtml" />
     <Content Include="Views\Donator\Delete.cshtml" />

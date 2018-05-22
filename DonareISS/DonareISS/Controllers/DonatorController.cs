@@ -170,6 +170,14 @@ namespace DonareISS.Controllers
             return PartialView();
         }
 
+        public ActionResult Istoric()
+        {
+            var user = (Utilizator)Session["Utilizator"];
+            var Donator = db.Donator.Where(x => x.Utilizator.Id_Utilizator == user.Id_Utilizator).First();
+
+            return View(Donator.ProbaDeSange.OrderByDescending(x => x.DataProba));
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
