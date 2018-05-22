@@ -170,12 +170,13 @@ namespace DonareISS.Controllers
         public ActionResult CerereSange([Bind(Include = "Celula_Ceruta,Cantitate_Ceruta,SelectPacienti")] Cerere cerere)
         {
             string selectedPacientId = Request.Form["SelectPacienti"];
-            
+            var user = (Utilizator)Session["Utilizator"];
+
             if (ModelState.IsValid && cerere.Celula_Ceruta != null && cerere.Cantitate_Ceruta != null)
             {
                 cerere.Status = "Inregistrata";
                 cerere.Pacient = db.Pacient.Find(Convert.ToInt32(selectedPacientId));
-                // mai trebuie sa adaugi medicul la care apartine
+                cerere.Medic = db.Medic.Where(x => x.Utilizator.Id_Utilizator == user.Id_Utilizator).First();
                 db.Cerere.Add(cerere);
                 db.SaveChanges();
                 

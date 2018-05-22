@@ -11,7 +11,8 @@ namespace DonareISS
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ChestionarDonare
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,6 +23,7 @@ namespace DonareISS
     
         public int Id_ChestionarDonare { get; set; }
         public Nullable<int> Greutate { get; set; }
+        [Display(Name= "Interventii chirurgicale")]
         public string InterventiiChirurgicale { get; set; }
         public Nullable<int> Puls { get; set; }
         public string Tensiune { get; set; }

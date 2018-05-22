@@ -162,6 +162,7 @@
     <Compile Include="ChestionarDonare.cs">
       <DependentUpon>ISS.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\DonatorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -1112,6 +1113,15 @@
     <Content Include="Views\OperatorCentru\Index.cshtml" />
     <Content Include="Views\Login\LoginV2.cshtml" />
     <Content Include="Views\Shared\_LayoutLoginV1.cshtml" />
+    <None Include="Views\Shared\_LayoutDonator.cshtml" />
+    <Content Include="Views\Donator\Create.cshtml" />
+    <Content Include="Views\Donator\Delete.cshtml" />
+    <Content Include="Views\Donator\Details.cshtml" />
+    <Content Include="Views\Donator\Edit.cshtml" />
+    <Content Include="Views\Donator\Index.cshtml" />
+    <Content Include="Views\Donator\Chestionar.cshtml" />
+    <Content Include="Views\Donator\DropDownListBoli.cshtml" />
+    <Content Include="Views\Donator\SuccessChestionar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
