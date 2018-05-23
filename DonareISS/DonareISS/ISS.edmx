@@ -36,6 +36,7 @@
           <Property Name="Tensiune" Type="varchar" MaxLength="15" />
           <Property Name="Destinatar" Type="varchar" MaxLength="30" />
           <Property Name="Id_Donator" Type="int" />
+          <Property Name="StatusDonare" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Donator">
           <Key>
@@ -489,6 +490,7 @@
           <Property Name="Destinatar" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Boli" Relationship="Self.FK__Boli__Id_Chestio__38996AB5" FromRole="ChestionarDonare" ToRole="Boli" />
           <NavigationProperty Name="Donator" Relationship="Self.FK__Chestiona__Id_Do__35BCFE0A" FromRole="ChestionarDonare" ToRole="Donator" />
+          <Property Name="StatusDonare" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Donator">
           <Key>
@@ -789,6 +791,7 @@
           <EntitySetMapping Name="ChestionarDonare">
             <EntityTypeMapping TypeName="ISSModel.ChestionarDonare">
               <MappingFragment StoreEntitySet="ChestionarDonare">
+                <ScalarProperty Name="StatusDonare" ColumnName="StatusDonare" />
                 <ScalarProperty Name="Id_ChestionarDonare" ColumnName="Id_ChestionarDonare" />
                 <ScalarProperty Name="Greutate" ColumnName="Greutate" />
                 <ScalarProperty Name="InterventiiChirurgicale" ColumnName="InterventiiChirurgicale" />

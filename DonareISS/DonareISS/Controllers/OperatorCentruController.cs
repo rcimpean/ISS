@@ -4,12 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DonareISS;
-using System.Web.Script.Serialization;
-using Newtonsoft.Json;
-using System.Web.Helpers;
 
 namespace DonareISS.Controllers
 {
@@ -26,18 +21,6 @@ namespace DonareISS.Controllers
             op.Adresa = "piata unirii cluj";
             ViewBag.op = op;
             return View(db.OperatorCentru.ToList());
-        }
-
-        public JsonResult GetOperator()
-        {
-            var json = JsonConvert.SerializeObject(db.OperatorCentru.ToList(), Formatting.Indented,
-                        new JsonSerializerSettings()
-                        {
-                            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-
-                        });
-
-            return Json(json, JsonRequestBehavior.AllowGet);
         }
 
         // GET: OperatorCentru/Details/5

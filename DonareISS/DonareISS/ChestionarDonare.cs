@@ -26,6 +26,7 @@ namespace DonareISS
         public Nullable<int> Puls { get; set; }
         public string Tensiune { get; set; }
         public string Destinatar { get; set; }
+        public string StatusDonare { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Boli> Boli { get; set; }

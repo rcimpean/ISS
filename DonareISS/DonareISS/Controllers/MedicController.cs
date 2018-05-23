@@ -197,6 +197,16 @@ namespace DonareISS.Controllers
             return View(db.ChestionarDonare.Find(id));
         }
 
+        [ChildActionOnly]
+        public ActionResult ChestionarNou()
+        {
+            IEnumerable<ChestionarDonare> chestionar = db.ChestionarDonare.Where(x => x.StatusDonare.ToLower() == "neverificat");
+
+            if (chestionar != null)
+                return View(chestionar);
+            return View(new List<Cerere>());
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
