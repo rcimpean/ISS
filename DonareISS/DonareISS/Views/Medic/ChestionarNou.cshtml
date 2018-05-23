@@ -1,0 +1,35 @@
+﻿@model IEnumerable<DonareISS.ChestionarDonare>
+
+
+<p hidden id="paragraf">
+    @if (@Model.Count() == 0)
+    {
+        @Model.First().Id_ChestionarDonare
+    }
+</p>
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">x</span>
+                </button>
+                <h4 class="text-center">Exista cereri noi!</h4>
+                @foreach (ChestionarDonare item in Model)
+                {
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="card padding margin-bottom-10">
+                                Cererea cu id @item.Id_ChestionarDonare @Html.ActionLink("Preia", "EditChestionar", "Medic", new { id = item.Id_ChestionarDonare }, new { @class = "btn btn-default right" })
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

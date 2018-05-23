@@ -59,7 +59,7 @@ namespace DonareISS.Controllers
             {
                 //return View("aici");
                 Session["Utilizator"] = ut;
-                return RedirectToAction("Index", ut.Functie);
+                return RedirectToAction("Index", ut.Functie.Replace(" ", ""));
                // return RedirectToAction("Index", "Home");
 
             }
@@ -165,6 +165,8 @@ namespace DonareISS.Controllers
             {
                 var PAROLA = SHA1.Create().ComputeHash(Encoding.UTF8.GetBytes(model.Parola));
                 model.Parola = BitConverter.ToString(PAROLA).Replace("-", "").ToLower();
+                if (model.Functie == "Operator")
+                    model.Functie = "OperatorCentru";
                 // Attempt to register the user
                 try
                 {
@@ -179,7 +181,7 @@ namespace DonareISS.Controllers
                         db.Medic.Add(medic);
                         db.SaveChanges();
                     }
-                    else if (model.Functie == "Operator")
+                    else if (model.Functie == "OperatorCentru")
                     {
                         var AdresaCentru = Request.Form["AdresaCentru"];
                         var operatorCentru = new OperatorCentru();
