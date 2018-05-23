@@ -12,7 +12,11 @@ namespace DonareISS.Controllers
     {
         private ISSEntities db = new ISSEntities();
 
-       
+        public ActionResult Logout()
+        {
+            Session.RemoveAll();
+            return RedirectToAction("Index/Login");
+        }
 
         // GET: OperatorCentru
         public ActionResult Index()

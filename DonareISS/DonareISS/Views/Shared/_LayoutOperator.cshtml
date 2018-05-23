@@ -18,7 +18,7 @@
                 </button>
                 <div class="logo-wrapper">
                     <div class="logo">
-                        <a href="@Url.Action("Index", "OperatorCentru")">
+                        <a href="@Url.Action("Index", "Medic")">
                             <img src="@Url.Content("~/fonts/Logo-ISS.png")" class="logo-iss" />
                         </a>
                     </div>
@@ -26,8 +26,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Lista Pacienti", "Pacienti", "OperatorCentru")</li>
-                    <li>@Html.ActionLink("Creaza cerere noua", "CerereSange", "OperatorCentru")</li>*@
+                    <li>@Html.ActionLink("Lista Pacienti", "Pacienti", "Medic")</li>
+                    <li>@Html.ActionLink("Creaza cerere noua", "CerereSange", "Medic")</li>
+                    <li>@Html.ActionLink("Logout", "Logout", "Operator")</li>
                 </ul>
             </div>
         </div>

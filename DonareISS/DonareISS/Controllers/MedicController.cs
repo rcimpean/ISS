@@ -14,7 +14,11 @@ namespace DonareISS.Controllers
     public class MedicController : Controller
     {
         private ISSEntities db = new ISSEntities();
-
+        public ActionResult Logout()
+        {
+            Session.RemoveAll();
+            return RedirectToAction("Index/Login");
+        }
         // GET: Medic
         [ValidationSession("Medic")]
         public ActionResult Index()
