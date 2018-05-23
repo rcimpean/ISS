@@ -21,6 +21,23 @@ body {
 .form-group:last-child {
     padding-bottom: 10px;
 }
+.form-group.stoc {
+    padding-bottom: 0;
+    padding-top: 0;
+    margin: 0;
+}
+
+.right {
+    float: right;
+}
+
+.date {
+    font-weight: bold;
+}
+
+.padding-entitate {
+    padding: 5px 10px;
+}
 
 /*Logo classes*/
 .logo-iss {
@@ -138,12 +155,4 @@ body {
 }
 .form-control.r {
     height:20px;
-}
-
-.date {
-    font-weight: bold;
-}
-
-.padding-entitate {
-    padding: 5px 10px;
 }

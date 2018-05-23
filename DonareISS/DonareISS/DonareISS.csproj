@@ -304,6 +304,7 @@
       <DependentUpon>ISS.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\CustomScript\FunctieController.js" />
+    <Content Include="Scripts\CustomScript\modal.js" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-touch.min.js.map" />
@@ -1114,6 +1115,10 @@
     <Content Include="Views\Login\LoginV2.cshtml" />
     <Content Include="Views\Shared\_LayoutLoginV1.cshtml" />
     <Content Include="Views\Donator\Istoric.cshtml" />
+    <Content Include="Views\OperatorCentru\CerereNoua.cshtml" />
+    <Content Include="Views\OperatorCentru\EditCerere.cshtml" />
+    <Content Include="Views\OperatorCentru\VeziStoc.cshtml" />
+    <Content Include="Views\OperatorCentru\CerereProcesata.cshtml" />
     <None Include="Views\Shared\_LayoutDonator.cshtml" />
     <Content Include="Views\Donator\Create.cshtml" />
     <Content Include="Views\Donator\Delete.cshtml" />
@@ -1123,6 +1128,7 @@
     <Content Include="Views\Donator\Chestionar.cshtml" />
     <Content Include="Views\Donator\DropDownListBoli.cshtml" />
     <Content Include="Views\Donator\SuccessChestionar.cshtml" />
+    <Content Include="Views\Shared\_LayoutOperator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

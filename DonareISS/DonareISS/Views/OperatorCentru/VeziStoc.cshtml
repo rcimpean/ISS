@@ -1,0 +1,26 @@
+﻿@model DonareISS.Stoc
+
+<h3>Stocul actual</h3>
+<div class="row margin">
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="card padding margin-bottom-10">
+            <div class="form-group stoc">
+                <label class="control-label">Cantitatea de globule rosii: @Model.CantitateGlobuleRosii.ToString()</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="card padding margin-bottom-10">
+            <div class="form-group stoc">
+                <label class="control-label">Cantitatea de trombocite: @Model.CantitateTrombocite.ToString()</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="card padding margin-bottom-10">
+            <div class="form-group stoc">
+                <label class="control-label">Cantitatea de plasma: @Model.CantitatePlasma.ToString()</label>
+            </div>
+        </div>
+    </div>
+</div>

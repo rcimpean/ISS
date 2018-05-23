@@ -1,0 +1,20 @@
+﻿@model DonareISS.Medic
+
+@{
+    ViewBag.Title = "CerereProcesata";
+    Layout = "~/Views/Shared/_LayoutOperator.cshtml";
+}
+
+<div class="second-container">
+    <div class="row margin">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 card">
+            <h3>Cererea a fost procesata cu succes!</h3>
+
+            <h4>Date de livrare</h4>
+            <p>Adresa: @Model.Spital</p>
+            <p>Persoana: @Model.Utilizator.Nume @Model.Utilizator.Prenume</p>
+
+            <button></button>
+        </div>
+    </div>
+</div>

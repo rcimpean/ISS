@@ -1,0 +1,44 @@
+﻿@model DonareISS.Cerere
+
+@{
+    var user = (Utilizator)Session["Utilizator"];
+    ViewBag.Title = "EditCerere";
+    Layout = "~/Views/Shared/_LayoutOperator.cshtml";
+}
+
+@Html.Action("VeziStoc")
+<div class="second-container">
+    <div class="row margin">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 card">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-horizontal">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Celula_Ceruta, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.Celula_Ceruta, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Celula_Ceruta, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Cantitate_Ceruta, htmlAttributes: new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.EditorFor(model => model.Cantitate_Ceruta, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Cantitate_Ceruta, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
+                            <input type="submit" value="Proceseaza" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
