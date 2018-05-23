@@ -1119,6 +1119,7 @@
     <Content Include="Views\OperatorCentru\EditCerere.cshtml" />
     <Content Include="Views\OperatorCentru\VeziStoc.cshtml" />
     <Content Include="Views\OperatorCentru\CerereProcesata.cshtml" />
+    <Content Include="Views\Medic\ChestionarNou.cshtml" />
     <None Include="Views\Shared\_LayoutDonator.cshtml" />
     <Content Include="Views\Donator\Create.cshtml" />
     <Content Include="Views\Donator\Delete.cshtml" />

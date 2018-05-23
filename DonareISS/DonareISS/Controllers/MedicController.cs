@@ -192,6 +192,11 @@ namespace DonareISS.Controllers
             return View();
         }
 
+        public ActionResult EditChestionar(int id)
+        {
+            return View(db.ChestionarDonare.Find(id));
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
