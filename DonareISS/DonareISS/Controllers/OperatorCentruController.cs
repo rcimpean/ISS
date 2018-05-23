@@ -14,9 +14,14 @@ namespace DonareISS.Controllers
     {
         private ISSEntities db = new ISSEntities();
 
+       
+
         // GET: OperatorCentru
         public ActionResult Index()
         {
+            var op = new OperatorCentru();
+            op.Adresa = "piata unirii cluj";
+            ViewBag.op = op;
             return View(db.OperatorCentru.ToList());
         }
 
