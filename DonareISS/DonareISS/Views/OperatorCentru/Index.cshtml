@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutOperator.cshtml";
 }
 
 <h2>Index</h2>
@@ -18,18 +18,17 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Adresa)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Operator }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_Operator }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Operator })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <p hidden class=" adresa" id="adr">@item.Adresa</p>
+    }
+    <div id="map" style="height:500px"></div>
 
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEjIPgwtANC_dxfnSmOe2z2gOK6g6sGf0&callback=initMap&region=RO&libraries=geometry"
+            async defer></script>
+
+    <script src="~/Content/MapsContent/GMap.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 </table>
 @Html.Action("CerereNoua")
