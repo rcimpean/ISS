@@ -178,6 +178,12 @@ namespace DonareISS.Controllers
             return View(Donator.ProbaDeSange.OrderByDescending(x => x.DataProba));
         }
 
+        public ActionResult Logout()
+        {
+            Session.RemoveAll();
+            return RedirectToAction("Index/Login");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
