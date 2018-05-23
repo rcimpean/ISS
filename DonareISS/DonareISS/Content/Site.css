@@ -1,4 +1,5 @@
 ﻿/*General style*/
+
 body {
     padding-top: 50px;
     font-size: 15px;
@@ -146,4 +147,11 @@ body {
 
 .padding-entitate {
     padding: 5px 10px;
+}
+.navbar.navbar-inverse.navbar-fixed-top {
+    background: #1d2f10;
+    background: -webkit-linear-gradient(-135deg, #6b9f46,#1d2f10);
+    background: -o-linear-gradient(-135deg, #6b9f46,#1d2f10);
+    background: -moz-linear-gradient(-135deg, #6b9f46,#1d2f10);
+    background: linear-gradient(-135deg, #6b9f46,#1d2f10);
 }
